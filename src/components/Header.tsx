@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           </div>
           <div className="info-item">
             <span className="info-label">Anno:</span>
-            <span className="info-value">2024-2025</span>
+            <span className="info-value">2025-2026</span>
           </div>
         </div>
       </div>
