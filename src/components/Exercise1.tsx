@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Exercise1.css';
+import { getRandomQuestions, Question } from '../data/questionsDatabase';
 
 interface FundamentalQuantity {
   id: number;
@@ -10,19 +11,14 @@ interface FundamentalQuantity {
   description: string;
 }
 
-interface Exercise {
-  id: number;
-  question: string;
-  options: string[];
-  correctAnswer: number;
-  explanation: string;
-}
+// Rimuovo l'interfaccia Exercise locale, uso quella importata
 
 const Exercise1: React.FC = () => {
   const [currentSection, setCurrentSection] = useState<'theory' | 'exercises'>('theory');
   const [currentExercise, setCurrentExercise] = useState<number>(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState<boolean>(false);
+  const [exercises, setExercises] = useState<Question[]>([]);
 
   const fundamentalQuantities: FundamentalQuantity[] = [
     {
@@ -83,68 +79,20 @@ const Exercise1: React.FC = () => {
     }
   ];
 
-  const exercises: Exercise[] = [
-    {
-      id: 1,
-      question: "Quale delle seguenti è una grandezza fondamentale?",
-      options: [
-        "Volume",
-        "Velocità",
-        "Massa",
-        "Densità"
-      ],
-      correctAnswer: 2,
-      explanation: "La massa è una delle 7 grandezze fondamentali del Sistema Internazionale. Volume, velocità e densità sono grandezze derivate."
-    },
-    {
-      id: 2,
-      question: "Qual è l'unità di misura della lunghezza nel Sistema Internazionale?",
-      options: [
-        "Centimetro (cm)",
-        "Metro (m)",
-        "Chilometro (km)",
-        "Pollice (in)"
-      ],
-      correctAnswer: 1,
-      explanation: "Il metro (m) è l'unità fondamentale per la misura della lunghezza nel Sistema Internazionale."
-    },
-    {
-      id: 3,
-      question: "La velocità è una grandezza:",
-      options: [
-        "Fondamentale",
-        "Derivata",
-        "Scalare",
-        "Vettoriale"
-      ],
-      correctAnswer: 1,
-      explanation: "La velocità è una grandezza derivata, ottenuta dal rapporto tra lunghezza e tempo (v = l/t)."
-    },
-    {
-      id: 4,
-      question: "Quale simbolo rappresenta la quantità di sostanza?",
-      options: [
-        "Q",
-        "n",
-        "N",
-        "S"
-      ],
-      correctAnswer: 1,
-      explanation: "Il simbolo 'n' rappresenta la quantità di sostanza, misurata in moli (mol)."
-    },
-    {
-      id: 5,
-      question: "L'unità di misura della temperatura termodinamica è:",
-      options: [
-        "Grado Celsius (°C)",
-        "Kelvin (K)",
-        "Grado Fahrenheit (°F)",
-        "Grado Rankine (°R)"
-      ],
-      correctAnswer: 1,
-      explanation: "Il kelvin (K) è l'unità fondamentale per la temperatura termodinamica nel Sistema Internazionale."
-    }
-  ];
+  // Carica domande randomizzate all'avvio
+  useEffect(() => {
+    const randomQuestions = getRandomQuestions(8, ['grandezze']); // 8 domande sulla categoria grandezze
+    setExercises(randomQuestions);
+  }, []);
+
+  // Funzione per ricaricare nuove domande
+  const reloadQuestions = () => {
+    const newQuestions = getRandomQuestions(8, ['grandezze']);
+    setExercises(newQuestions);
+    setCurrentExercise(0);
+    setSelectedAnswers([]);
+    setShowResults(false);
+  };
 
   const handleAnswerSelect = (answerIndex: number) => {
     const newAnswers = [...selectedAnswers];
@@ -169,9 +117,7 @@ const Exercise1: React.FC = () => {
   };
 
   const resetExercises = () => {
-    setCurrentExercise(0);
-    setSelectedAnswers([]);
-    setShowResults(false);
+    reloadQuestions();
   };
 
   const getScore = () => {
@@ -390,7 +336,7 @@ const Exercise1: React.FC = () => {
 
               <div className="results-actions">
                 <button className="action-btn reset" onClick={resetExercises}>
-                  🔄 Riprova
+                  🔄 Nuove Domande
                 </button>
                 <button className="action-btn theory" onClick={() => setCurrentSection('theory')}>
                   📖 Ripassa la Teoria

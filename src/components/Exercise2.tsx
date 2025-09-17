@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Exercise2.css';
+import { getRandomQuestions, Question } from '../data/questionsDatabase';
 
 interface Substance {
   id: string;
@@ -22,12 +23,18 @@ interface ChemicalReaction {
 }
 
 const Exercise2: React.FC = () => {
-  const [currentSection, setCurrentSection] = useState<'theory' | 'lab'>('theory');
+  const [currentSection, setCurrentSection] = useState<'theory' | 'lab' | 'quiz'>('theory');
   const [selectedSubstances, setSelectedSubstances] = useState<string[]>([]);
   const [lastReaction, setLastReaction] = useState<ChemicalReaction | null>(null);
   const [showExplosion, setShowExplosion] = useState<boolean>(false);
   const [cabinetOpen, setCabinetOpen] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  
+  // Stati per il quiz
+  const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
+  const [currentQuizQuestion, setCurrentQuizQuestion] = useState<number>(0);
+  const [quizAnswers, setQuizAnswers] = useState<number[]>([]);
+  const [showQuizResults, setShowQuizResults] = useState<boolean>(false);
 
   const substances: Substance[] = [
     // ELEMENTI - Gruppo 1 (Metalli Alcalini)
@@ -537,6 +544,52 @@ const Exercise2: React.FC = () => {
     return selectedSubstances.map(id => substances.find(s => s.id === id)).filter(Boolean);
   };
 
+  // Carica domande per il quiz
+  useEffect(() => {
+    if (currentSection === 'quiz') {
+      const quizQuestions = getRandomQuestions(10, ['sostanze', 'reazioni', 'acidi-basi', 'soluzioni', 'legami', 'tavola-periodica']);
+      setQuizQuestions(quizQuestions);
+      setCurrentQuizQuestion(0);
+      setQuizAnswers([]);
+      setShowQuizResults(false);
+    }
+  }, [currentSection]);
+
+  // Funzioni per il quiz
+  const handleQuizAnswerSelect = (answerIndex: number) => {
+    const newAnswers = [...quizAnswers];
+    newAnswers[currentQuizQuestion] = answerIndex;
+    setQuizAnswers(newAnswers);
+  };
+
+  const nextQuizQuestion = () => {
+    if (currentQuizQuestion < quizQuestions.length - 1) {
+      setCurrentQuizQuestion(currentQuizQuestion + 1);
+    }
+  };
+
+  const prevQuizQuestion = () => {
+    if (currentQuizQuestion > 0) {
+      setCurrentQuizQuestion(currentQuizQuestion - 1);
+    }
+  };
+
+  const checkQuizAnswers = () => {
+    setShowQuizResults(true);
+  };
+
+  const resetQuiz = () => {
+    const newQuestions = getRandomQuestions(10, ['sostanze', 'reazioni', 'acidi-basi', 'soluzioni', 'legami', 'tavola-periodica']);
+    setQuizQuestions(newQuestions);
+    setCurrentQuizQuestion(0);
+    setQuizAnswers([]);
+    setShowQuizResults(false);
+  };
+
+  const getQuizScore = () => {
+    return quizAnswers.filter((answer, index) => answer === quizQuestions[index].correctAnswer).length;
+  };
+
   const getFilteredSubstances = () => {
     if (selectedCategory === 'all') return substances;
     
@@ -589,6 +642,12 @@ const Exercise2: React.FC = () => {
             onClick={() => setCurrentSection('lab')}
           >
             🔬 Laboratorio Virtuale
+          </button>
+          <button 
+            className={`tab ${currentSection === 'quiz' ? 'active' : ''}`}
+            onClick={() => setCurrentSection('quiz')}
+          >
+            ✏️ Quiz
           </button>
         </div>
       </div>
@@ -797,6 +856,144 @@ const Exercise2: React.FC = () => {
               <div className="explosion-particle">💥</div>
               <div className="explosion-particle">💥</div>
               <div className="explosion-particle">💥</div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {currentSection === 'quiz' && (
+        <div className="quiz-section">
+          {!showQuizResults ? (
+            <>
+              <div className="quiz-progress">
+                <div className="progress-bar">
+                  <div 
+                    className="progress-fill" 
+                    style={{ width: `${((currentQuizQuestion + 1) / quizQuestions.length) * 100}%` }}
+                  ></div>
+                </div>
+                <span className="progress-text">
+                  Domanda {currentQuizQuestion + 1} di {quizQuestions.length}
+                </span>
+              </div>
+
+              <div className="quiz-card">
+                <h3>{quizQuestions[currentQuizQuestion]?.question}</h3>
+                <div className="quiz-difficulty">
+                  Difficoltà: <span className={`difficulty-badge ${quizQuestions[currentQuizQuestion]?.difficulty}`}>
+                    {quizQuestions[currentQuizQuestion]?.difficulty === 'easy' ? '🟢 Facile' : 
+                     quizQuestions[currentQuizQuestion]?.difficulty === 'medium' ? '🟡 Media' : '🔴 Difficile'}
+                  </span>
+                </div>
+                <div className="options">
+                  {quizQuestions[currentQuizQuestion]?.options.map((option, index) => (
+                    <button
+                      key={index}
+                      className={`option ${quizAnswers[currentQuizQuestion] === index ? 'selected' : ''}`}
+                      onClick={() => handleQuizAnswerSelect(index)}
+                    >
+                      <span className="option-letter">{String.fromCharCode(65 + index)}</span>
+                      <span className="option-text">{option}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="quiz-navigation">
+                <button 
+                  className="nav-btn prev" 
+                  onClick={prevQuizQuestion}
+                  disabled={currentQuizQuestion === 0}
+                >
+                  ← Precedente
+                </button>
+                
+                {currentQuizQuestion === quizQuestions.length - 1 ? (
+                  <button 
+                    className="nav-btn check" 
+                    onClick={checkQuizAnswers}
+                    disabled={quizAnswers.length !== quizQuestions.length}
+                  >
+                    ✅ Verifica Risposte
+                  </button>
+                ) : (
+                  <button 
+                    className="nav-btn next" 
+                    onClick={nextQuizQuestion}
+                    disabled={quizAnswers[currentQuizQuestion] === undefined}
+                  >
+                    Successivo →
+                  </button>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="quiz-results-section">
+              <div className="score-card">
+                <h3>🎉 Risultati Quiz</h3>
+                <div className="score-display">
+                  <div className="score-circle">
+                    <span className="score-number">{getQuizScore()}</span>
+                    <span className="score-total">/{quizQuestions.length}</span>
+                  </div>
+                  <p className="score-percentage">
+                    {Math.round((getQuizScore() / quizQuestions.length) * 100)}%
+                  </p>
+                </div>
+                <p className="score-message">
+                  {getQuizScore() === quizQuestions.length 
+                    ? "Perfetto! 🏆 Hai risposto correttamente a tutte le domande!"
+                    : getQuizScore() >= quizQuestions.length * 0.8
+                    ? "Ottimo lavoro! 👍 Hai una buona conoscenza dell'argomento."
+                    : getQuizScore() >= quizQuestions.length * 0.6
+                    ? "Buono! 📚 Ripassa la teoria e riprova."
+                    : "Continua a studiare! 💪 Ripassa gli argomenti trattati."
+                  }
+                </p>
+              </div>
+
+              <div className="answers-review">
+                <h4>📝 Rivedi le Risposte</h4>
+                {quizQuestions.map((question, index) => (
+                  <div key={question.id} className="answer-item">
+                    <div className="question-review">
+                      <strong>Domanda {index + 1}:</strong> {question.question}
+                      <span className={`difficulty-indicator ${question.difficulty}`}>
+                        {question.difficulty === 'easy' ? '🟢' : question.difficulty === 'medium' ? '🟡' : '🔴'}
+                      </span>
+                    </div>
+                    <div className="answer-review">
+                      <div className={`user-answer ${quizAnswers[index] === question.correctAnswer ? 'correct' : 'incorrect'}`}>
+                        <span className="answer-label">La tua risposta:</span>
+                        <span className="answer-text">
+                          {String.fromCharCode(65 + quizAnswers[index])}. {question.options[quizAnswers[index]]}
+                        </span>
+                        {quizAnswers[index] === question.correctAnswer ? ' ✅' : ' ❌'}
+                      </div>
+                      {quizAnswers[index] !== question.correctAnswer && (
+                        <div className="correct-answer">
+                          <span className="answer-label">Risposta corretta:</span>
+                          <span className="answer-text">
+                            {String.fromCharCode(65 + question.correctAnswer)}. {question.options[question.correctAnswer]}
+                          </span>
+                        </div>
+                      )}
+                      <div className="explanation">
+                        <strong>Spiegazione:</strong> {question.explanation}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="quiz-actions">
+                <button className="action-btn reset" onClick={resetQuiz}>
+                  🔄 Nuove Domande
+                </button>
+                <button className="action-btn theory" onClick={() => setCurrentSection('theory')}>
+                  📖 Ripassa la Teoria
+                </button>
+              </div>
             </div>
           )}
         </div>
