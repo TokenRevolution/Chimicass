@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Exercise1 from './components/Exercise1';
 import Exercise2 from './components/Exercise2';
+import Exercise3 from './components/Exercise3';
 
 const App: React.FC = () => {
   const [currentExercise, setCurrentExercise] = useState<number>(1);
@@ -10,7 +11,7 @@ const App: React.FC = () => {
   const exercises = [
     { id: 1, title: "Grandezze Fondamentali e Derivate", component: Exercise1 },
     { id: 2, title: "Sostanze, Composti e Miscugli", component: Exercise2 },
-    { id: 3, title: "Esercizio 3", component: null },
+    { id: 3, title: "Calcoli con Grandezze Fondamentali", component: Exercise3 },
     { id: 4, title: "Esercizio 4", component: null }
   ];
 

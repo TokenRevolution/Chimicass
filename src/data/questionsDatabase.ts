@@ -104,6 +104,188 @@ export const questionsDatabase: Question[] = [
     difficulty: "easy"
   },
 
+  // CALCOLI CON GRANDEZZE FONDAMENTALI
+  {
+    id: 51,
+    question: "Un oggetto ha una massa di 2,5 kg e un volume di 0,001 m³. Qual è la sua densità?",
+    options: ["250 kg/m³", "2500 kg/m³", "25 kg/m³", "0,25 kg/m³"],
+    correctAnswer: 1,
+    explanation: "La densità si calcola come ρ = m/V = 2,5 kg / 0,001 m³ = 2500 kg/m³.",
+    category: "calcoli",
+    difficulty: "medium"
+  },
+  {
+    id: 52,
+    question: "Se un'automobile percorre 120 km in 2 ore, qual è la sua velocità media?",
+    options: ["60 km/h", "240 km/h", "30 km/h", "120 km/h"],
+    correctAnswer: 0,
+    explanation: "La velocità si calcola come v = s/t = 120 km / 2 h = 60 km/h.",
+    category: "calcoli",
+    difficulty: "easy"
+  },
+  {
+    id: 53,
+    question: "Un cubo ha uno spigolo di 3 m. Qual è il suo volume?",
+    options: ["9 m³", "27 m³", "6 m³", "12 m³"],
+    correctAnswer: 1,
+    explanation: "Il volume di un cubo è V = l³ = (3 m)³ = 27 m³.",
+    category: "calcoli",
+    difficulty: "easy"
+  },
+  {
+    id: 54,
+    question: "Quanti secondi ci sono in 2,5 ore?",
+    options: ["9000 s", "150 s", "900 s", "15000 s"],
+    correctAnswer: 0,
+    explanation: "2,5 ore = 2,5 × 3600 s = 9000 s.",
+    category: "calcoli",
+    difficulty: "medium"
+  },
+  {
+    id: 55,
+    question: "Un oggetto di massa 0,5 kg viene accelerato con una forza di 10 N. Qual è la sua accelerazione?",
+    options: ["20 m/s²", "5 m/s²", "0,05 m/s²", "50 m/s²"],
+    correctAnswer: 0,
+    explanation: "Dalla seconda legge di Newton: a = F/m = 10 N / 0,5 kg = 20 m/s².",
+    category: "calcoli",
+    difficulty: "medium"
+  },
+  {
+    id: 56,
+    question: "Un rettangolo ha base 4 m e altezza 3 m. Qual è la sua area?",
+    options: ["7 m²", "12 m²", "14 m²", "16 m²"],
+    correctAnswer: 1,
+    explanation: "L'area di un rettangolo è A = b × h = 4 m × 3 m = 12 m².",
+    category: "calcoli",
+    difficulty: "easy"
+  },
+  {
+    id: 57,
+    question: "Se la densità dell'acqua è 1000 kg/m³, qual è la massa di 2 litri d'acqua?",
+    options: ["2 kg", "2000 kg", "0,002 kg", "20 kg"],
+    correctAnswer: 0,
+    explanation: "2 litri = 0,002 m³. Massa = ρ × V = 1000 kg/m³ × 0,002 m³ = 2 kg.",
+    category: "calcoli",
+    difficulty: "medium"
+  },
+  {
+    id: 58,
+    question: "Un oggetto cade per 3 secondi. Se l'accelerazione di gravità è 9,8 m/s², qual è la velocità finale?",
+    options: ["29,4 m/s", "3,27 m/s", "9,8 m/s", "32,4 m/s"],
+    correctAnswer: 0,
+    explanation: "v = v₀ + at = 0 + 9,8 m/s² × 3 s = 29,4 m/s.",
+    category: "calcoli",
+    difficulty: "medium"
+  },
+  {
+    id: 59,
+    question: "Quanti metri ci sono in 5 chilometri?",
+    options: ["500 m", "5000 m", "50 m", "50000 m"],
+    correctAnswer: 1,
+    explanation: "5 km = 5 × 1000 m = 5000 m.",
+    category: "calcoli",
+    difficulty: "easy"
+  },
+  {
+    id: 60,
+    question: "Un cilindro ha raggio 2 m e altezza 5 m. Qual è il suo volume? (π ≈ 3,14)",
+    options: ["62,8 m³", "31,4 m³", "15,7 m³", "125,6 m³"],
+    correctAnswer: 0,
+    explanation: "V = πr²h = 3,14 × (2 m)² × 5 m = 3,14 × 4 × 5 = 62,8 m³.",
+    category: "calcoli",
+    difficulty: "hard"
+  },
+  {
+    id: 61,
+    question: "Se un oggetto ha densità 800 kg/m³ e massa 1,6 kg, qual è il suo volume?",
+    options: ["0,002 m³", "0,02 m³", "0,2 m³", "2 m³"],
+    correctAnswer: 0,
+    explanation: "V = m/ρ = 1,6 kg / 800 kg/m³ = 0,002 m³.",
+    category: "calcoli",
+    difficulty: "medium"
+  },
+  {
+    id: 62,
+    question: "Un'automobile accelera da 0 a 72 km/h in 10 secondi. Qual è la sua accelerazione?",
+    options: ["7,2 m/s²", "2 m/s²", "72 m/s²", "0,72 m/s²"],
+    correctAnswer: 1,
+    explanation: "72 km/h = 20 m/s. a = Δv/Δt = 20 m/s / 10 s = 2 m/s².",
+    category: "calcoli",
+    difficulty: "hard"
+  },
+  {
+    id: 63,
+    question: "Quanti grammi ci sono in 2,5 chilogrammi?",
+    options: ["25 g", "250 g", "2500 g", "25000 g"],
+    correctAnswer: 2,
+    explanation: "2,5 kg = 2,5 × 1000 g = 2500 g.",
+    category: "calcoli",
+    difficulty: "easy"
+  },
+  {
+    id: 64,
+    question: "Un oggetto di massa 2 kg ha una velocità di 10 m/s. Qual è la sua energia cinetica?",
+    options: ["20 J", "100 J", "200 J", "10 J"],
+    correctAnswer: 1,
+    explanation: "Ek = ½mv² = ½ × 2 kg × (10 m/s)² = ½ × 2 × 100 = 100 J.",
+    category: "calcoli",
+    difficulty: "hard"
+  },
+  {
+    id: 65,
+    question: "Se la temperatura è 25°C, qual è la temperatura in Kelvin?",
+    options: ["298 K", "248 K", "273 K", "323 K"],
+    correctAnswer: 0,
+    explanation: "T(K) = T(°C) + 273 = 25 + 273 = 298 K.",
+    category: "calcoli",
+    difficulty: "medium"
+  },
+  {
+    id: 66,
+    question: "Un oggetto percorre 150 m in 30 secondi. Qual è la sua velocità?",
+    options: ["5 m/s", "50 m/s", "0,2 m/s", "180 m/s"],
+    correctAnswer: 0,
+    explanation: "v = s/t = 150 m / 30 s = 5 m/s.",
+    category: "calcoli",
+    difficulty: "easy"
+  },
+  {
+    id: 67,
+    question: "Quanti millimetri ci sono in 1 metro?",
+    options: ["100 mm", "1000 mm", "10 mm", "10000 mm"],
+    correctAnswer: 1,
+    explanation: "1 m = 1000 mm.",
+    category: "calcoli",
+    difficulty: "easy"
+  },
+  {
+    id: 68,
+    question: "Un oggetto di massa 0,8 kg viene sollevato di 2 m. Qual è il lavoro compiuto? (g = 9,8 m/s²)",
+    options: ["15,68 J", "1,6 J", "16,8 J", "1,568 J"],
+    correctAnswer: 0,
+    explanation: "L = mgh = 0,8 kg × 9,8 m/s² × 2 m = 15,68 J.",
+    category: "calcoli",
+    difficulty: "hard"
+  },
+  {
+    id: 69,
+    question: "Se un oggetto ha volume 0,5 m³ e densità 400 kg/m³, qual è la sua massa?",
+    options: ["200 kg", "800 kg", "0,2 kg", "0,8 kg"],
+    correctAnswer: 0,
+    explanation: "m = ρV = 400 kg/m³ × 0,5 m³ = 200 kg.",
+    category: "calcoli",
+    difficulty: "medium"
+  },
+  {
+    id: 70,
+    question: "Un'automobile viaggia a 90 km/h per 2 ore. Quanta strada percorre?",
+    options: ["180 km", "45 km", "360 km", "90 km"],
+    correctAnswer: 0,
+    explanation: "s = vt = 90 km/h × 2 h = 180 km.",
+    category: "calcoli",
+    difficulty: "easy"
+  },
+
   // SOSTANZE, COMPOSTI E MISCUGLI
   {
     id: 11,
