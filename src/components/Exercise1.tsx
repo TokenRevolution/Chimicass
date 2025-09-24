@@ -9,6 +9,7 @@ interface FundamentalQuantity {
   unit: string;
   unitSymbol: string;
   description: string;
+  isNotCovered?: boolean;
 }
 
 // Rimuovo l'interfaccia Exercise locale, uso quella importata
@@ -47,11 +48,12 @@ const Exercise1: React.FC = () => {
     },
     {
       id: 4,
-      name: "Corrente elettrica",
+      name: "Corrente elettrica (non trattata)",
       symbol: "I",
       unit: "ampere",
       unitSymbol: "A",
-      description: "Quantità di carica elettrica che attraversa una sezione nell'unità di tempo"
+      description: "Quantità di carica elettrica che attraversa una sezione nell'unità di tempo",
+      isNotCovered: true
     },
     {
       id: 5,
@@ -71,11 +73,12 @@ const Exercise1: React.FC = () => {
     },
     {
       id: 7,
-      name: "Intensità luminosa",
+      name: "Intensità luminosa (non trattata)",
       symbol: "Iv",
       unit: "candela",
       unitSymbol: "cd",
-      description: "Potenza luminosa emessa in una direzione specifica"
+      description: "Potenza luminosa emessa in una direzione specifica",
+      isNotCovered: true
     }
   ];
 
@@ -173,7 +176,7 @@ const Exercise1: React.FC = () => {
                 </thead>
                 <tbody>
                   {fundamentalQuantities.map((quantity) => (
-                    <tr key={quantity.id}>
+                    <tr key={quantity.id} className={quantity.isNotCovered ? 'not-covered' : ''}>
                       <td className="quantity-name">{quantity.name}</td>
                       <td className="quantity-symbol">{quantity.symbol}</td>
                       <td className="quantity-unit">{quantity.unit}</td>
