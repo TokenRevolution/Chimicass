@@ -656,15 +656,15 @@ const Exercise4: React.FC = () => {
                 <div className="diagram-legend">
                   <div className="legend-item">
                     <div className="legend-color" style={{backgroundColor: '#6C5CE7'}}></div>
-                    <span>Solido (T &lt; 0°C)</span>
+                    <span>Solido (T {'<'} 0°C)</span>
                   </div>
                   <div className="legend-item">
                     <div className="legend-color" style={{backgroundColor: '#74B9FF'}}></div>
-                    <span>Liquido (0°C ≤ T &lt; 100°C)</span>
+                    <span>Liquido (0°C {'≤'} T {'<'} 100°C)</span>
                   </div>
                   <div className="legend-item">
                     <div className="legend-color" style={{backgroundColor: '#A29BFE'}}></div>
-                    <span>Gas (T ≥ 100°C)</span>
+                    <span>Gas (T {'≥'} 100°C)</span>
                   </div>
                   <div className="legend-item">
                     <div className="legend-color" style={{backgroundColor: '#FF6B6B'}}></div>
