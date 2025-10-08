@@ -47,6 +47,9 @@ const Exercise4: React.FC = () => {
   const [selectedState, setSelectedState] = useState<string>('');
   const [temperature, setTemperature] = useState<number>(25);
   const [showTransition, setShowTransition] = useState<string>('');
+  const [currentSimulation, setCurrentSimulation] = useState<'temperature' | 'pressure' | 'substances' | 'evaporation'>('temperature');
+  const [pressure, setPressure] = useState<number>(1); // atmosfere
+  const [selectedSubstance, setSelectedSubstance] = useState<string>('water');
 
   const statesOfMatter: StateOfMatter[] = [
     {
@@ -168,6 +171,15 @@ const Exercise4: React.FC = () => {
       icon: '❄️',
       description: 'Passaggio diretto da gas a solido senza passare per liquido'
     }
+  ];
+
+  const substances = [
+    { id: 'water', name: 'Acqua (H₂O)', meltingPoint: 0, boilingPoint: 100, color: '#74B9FF' },
+    { id: 'alcohol', name: 'Alcool Etilico', meltingPoint: -114, boilingPoint: 78, color: '#FD79A8' },
+    { id: 'mercury', name: 'Mercurio', meltingPoint: -39, boilingPoint: 357, color: '#95A5A6' },
+    { id: 'iron', name: 'Ferro', meltingPoint: 1538, boilingPoint: 2862, color: '#FFD93D' },
+    { id: 'oxygen', name: 'Ossigeno', meltingPoint: -218, boilingPoint: -183, color: '#4ECDC4' },
+    { id: 'co2', name: 'CO₂ (ghiaccio secco)', meltingPoint: -78, boilingPoint: -57, color: '#6C5CE7' }
   ];
 
   const energyTypes: EnergyType[] = [
@@ -486,10 +498,82 @@ const Exercise4: React.FC = () => {
       {currentSection === 'simulation' && (
         <div className="simulation-section">
           <div className="simulation-header">
-            <h3>🔬 Simulazione Stati della Materia</h3>
-            <p>Regola la temperatura per vedere come cambia lo stato della materia!</p>
+            <h3>🔬 Simulazioni Interattive - Stati della Materia</h3>
+            <p>Scegli una simulazione per esplorare i diversi aspetti degli stati della materia!</p>
+          </div>
+          
+          {/* Tabs per le diverse simulazioni */}
+          <div className="simulation-tabs" style={{display: 'flex', gap: '10px', marginBottom: '25px', flexWrap: 'wrap', justifyContent: 'center'}}>
+            <button 
+              className={`simulation-tab ${currentSimulation === 'temperature' ? 'active' : ''}`}
+              onClick={() => setCurrentSimulation('temperature')}
+              style={{
+                padding: '12px 20px',
+                borderRadius: '8px',
+                border: currentSimulation === 'temperature' ? '2px solid #667eea' : '2px solid #e0e0e0',
+                background: currentSimulation === 'temperature' ? '#667eea' : 'white',
+                color: currentSimulation === 'temperature' ? 'white' : '#333',
+                cursor: 'pointer',
+                fontWeight: '600',
+                transition: 'all 0.3s'
+              }}
+            >
+              🌡️ Temperatura
+            </button>
+            <button 
+              className={`simulation-tab ${currentSimulation === 'pressure' ? 'active' : ''}`}
+              onClick={() => setCurrentSimulation('pressure')}
+              style={{
+                padding: '12px 20px',
+                borderRadius: '8px',
+                border: currentSimulation === 'pressure' ? '2px solid #667eea' : '2px solid #e0e0e0',
+                background: currentSimulation === 'pressure' ? '#667eea' : 'white',
+                color: currentSimulation === 'pressure' ? 'white' : '#333',
+                cursor: 'pointer',
+                fontWeight: '600',
+                transition: 'all 0.3s'
+              }}
+            >
+              💨 Pressione
+            </button>
+            <button 
+              className={`simulation-tab ${currentSimulation === 'substances' ? 'active' : ''}`}
+              onClick={() => setCurrentSimulation('substances')}
+              style={{
+                padding: '12px 20px',
+                borderRadius: '8px',
+                border: currentSimulation === 'substances' ? '2px solid #667eea' : '2px solid #e0e0e0',
+                background: currentSimulation === 'substances' ? '#667eea' : 'white',
+                color: currentSimulation === 'substances' ? 'white' : '#333',
+                cursor: 'pointer',
+                fontWeight: '600',
+                transition: 'all 0.3s'
+              }}
+            >
+              🧪 Sostanze Diverse
+            </button>
+            <button 
+              className={`simulation-tab ${currentSimulation === 'evaporation' ? 'active' : ''}`}
+              onClick={() => setCurrentSimulation('evaporation')}
+              style={{
+                padding: '12px 20px',
+                borderRadius: '8px',
+                border: currentSimulation === 'evaporation' ? '2px solid #667eea' : '2px solid #e0e0e0',
+                background: currentSimulation === 'evaporation' ? '#667eea' : 'white',
+                color: currentSimulation === 'evaporation' ? 'white' : '#333',
+                cursor: 'pointer',
+                fontWeight: '600',
+                transition: 'all 0.3s'
+              }}
+            >
+              💧 Evaporazione
+            </button>
           </div>
 
+          {/* Simulazione 1: Temperatura */}
+          {currentSimulation === 'temperature' && (
+          <div className="temperature-simulation">
+            <h4 style={{textAlign: 'center', color: '#667eea', marginBottom: '20px'}}>Regola la temperatura per vedere come cambia lo stato dell'acqua!</h4>
           <div className="temperature-control">
             <div className="temperature-slider">
               <label htmlFor="temperature">Temperatura: {temperature}°C</label>
@@ -581,97 +665,432 @@ const Exercise4: React.FC = () => {
 
           <div className="energy-diagram">
             <h4>📊 Diagramma Energia-Temperatura</h4>
-            <div className="diagram-container">
-              <div className="energy-curve">
-                <svg className="curve-svg" viewBox="0 0 500 300">
-                  {/* Griglia di riferimento */}
+            
+            {/* Legenda sopra al grafico */}
+            <div style={{display: 'flex', justifyContent: 'center', gap: '15px', marginBottom: '15px', flexWrap: 'wrap', padding: '10px', background: 'white', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)'}}>
+              <div style={{display: 'flex', alignItems: 'center', gap: '6px'}}>
+                <div style={{width: '16px', height: '16px', backgroundColor: '#6C5CE7', borderRadius: '3px', border: '2px solid white', boxShadow: '0 2px 4px rgba(0,0,0,0.2)'}}></div>
+                <span style={{fontSize: '13px', fontWeight: '500'}}>Solido (T {'<'} 0°C)</span>
+              </div>
+              <div style={{display: 'flex', alignItems: 'center', gap: '6px'}}>
+                <div style={{width: '16px', height: '16px', backgroundColor: '#74B9FF', borderRadius: '3px', border: '2px solid white', boxShadow: '0 2px 4px rgba(0,0,0,0.2)'}}></div>
+                <span style={{fontSize: '13px', fontWeight: '500'}}>Liquido (0°C {'≤'} T {'<'} 100°C)</span>
+              </div>
+              <div style={{display: 'flex', alignItems: 'center', gap: '6px'}}>
+                <div style={{width: '16px', height: '16px', backgroundColor: '#A29BFE', borderRadius: '3px', border: '2px solid white', boxShadow: '0 2px 4px rgba(0,0,0,0.2)'}}></div>
+                <span style={{fontSize: '13px', fontWeight: '500'}}>Gas (T {'≥'} 100°C)</span>
+              </div>
+              <div style={{display: 'flex', alignItems: 'center', gap: '6px'}}>
+                <div style={{width: '16px', height: '16px', backgroundColor: '#FF6B6B', borderRadius: '50%', border: '3px solid white', boxShadow: '0 2px 6px rgba(255,107,107,0.4)'}}></div>
+                <span style={{fontSize: '13px', fontWeight: '500'}}>Temperatura Attuale</span>
+              </div>
+            </div>
+            
+            <div className="diagram-container" style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+              <div className="energy-curve" style={{width: '100%', maxWidth: '1400px'}}>
+                <svg className="curve-svg" viewBox="0 0 800 450" style={{background: '#f8f9fa', borderRadius: '12px', width: '100%', height: 'auto', minHeight: '500px'}}>
                   <defs>
-                    <pattern id="grid" width="50" height="30" patternUnits="userSpaceOnUse">
-                      <path d="M 50 0 L 0 0 0 30" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+                    {/* Gradiente per l'area sotto la curva */}
+                    <linearGradient id="energyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#667eea', stopOpacity: 0.8}} />
+                      <stop offset="50%" style={{stopColor: '#764ba2', stopOpacity: 0.5}} />
+                      <stop offset="100%" style={{stopColor: '#f093fb', stopOpacity: 0.2}} />
+                    </linearGradient>
+                    
+                    {/* Zone colorate per stati della materia */}
+                    <linearGradient id="solidZone" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#6C5CE7', stopOpacity: 0.15}} />
+                      <stop offset="100%" style={{stopColor: '#6C5CE7', stopOpacity: 0.05}} />
+                    </linearGradient>
+                    <linearGradient id="liquidZone" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#74B9FF', stopOpacity: 0.15}} />
+                      <stop offset="100%" style={{stopColor: '#74B9FF', stopOpacity: 0.05}} />
+                    </linearGradient>
+                    <linearGradient id="gasZone" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#A29BFE', stopOpacity: 0.15}} />
+                      <stop offset="100%" style={{stopColor: '#A29BFE', stopOpacity: 0.05}} />
+                    </linearGradient>
+                    
+                    {/* Pattern griglia */}
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e0e0e0" strokeWidth="0.5" opacity="0.5"/>
                     </pattern>
+                    
+                    {/* Ombra per il punto corrente */}
+                    <filter id="shadow">
+                      <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.3"/>
+                    </filter>
                   </defs>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
                   
-                  {/* Assi - utilizzano tutto lo spazio */}
-                  <line x1="50" y1="250" x2="450" y2="250" stroke="#333" strokeWidth="2" />
-                  <line x1="50" y1="50" x2="50" y2="250" stroke="#333" strokeWidth="2" />
+                  {/* Griglia di sfondo */}
+                  <rect x="100" y="50" width="650" height="350" fill="url(#grid)" />
                   
-                  {/* Linea curva che rappresenta l'energia */}
+                  {/* Zone colorate per stati della materia */}
+                  <rect x="100" y="50" width="162.5" height="350" fill="url(#solidZone)" />
+                  <rect x="262.5" y="50" width="325" height="350" fill="url(#liquidZone)" />
+                  <rect x="587.5" y="50" width="162.5" height="350" fill="url(#gasZone)" />
+                  
+                  {/* Linee verticali tratteggiate per punti di transizione */}
+                  <line x1="262.5" y1="50" x2="262.5" y2="400" stroke="#6C5CE7" strokeWidth="2" strokeDasharray="5,5" opacity="0.6" />
+                  <line x1="587.5" y1="50" x2="587.5" y2="400" stroke="#A29BFE" strokeWidth="2" strokeDasharray="5,5" opacity="0.6" />
+                  
+                  {/* Etichette zone */}
+                  <text x="181" y="35" textAnchor="middle" fill="#6C5CE7" fontSize="16" fontWeight="bold">SOLIDO</text>
+                  <text x="425" y="35" textAnchor="middle" fill="#74B9FF" fontSize="16" fontWeight="bold">LIQUIDO</text>
+                  <text x="669" y="35" textAnchor="middle" fill="#A29BFE" fontSize="16" fontWeight="bold">GAS</text>
+                  
+                  {/* Assi */}
+                  <line x1="100" y1="400" x2="750" y2="400" stroke="#2c3e50" strokeWidth="3" />
+                  <line x1="100" y1="50" x2="100" y2="400" stroke="#2c3e50" strokeWidth="3" />
+                  
+                  {/* Frecce assi */}
+                  <polygon points="750,400 738,395 738,405" fill="#2c3e50" />
+                  <polygon points="100,50 95,62 105,62" fill="#2c3e50" />
+                  
+                  {/* Area sotto la curva con gradiente */}
                   <path 
-                    d="M 50 250 Q 150 200 250 150 Q 350 100 450 50" 
-                    stroke="#4facfe" 
-                    strokeWidth="4" 
+                    d="M 100 400 L 100 300 Q 180 260 262.5 240 L 262.5 290 Q 360 240 425 190 Q 490 140 587.5 120 L 587.5 170 Q 650 120 700 75 Q 725 60 750 50 L 750 400 Z" 
+                    fill="url(#energyGradient)"
+                    opacity="0.6"
+                  />
+                  
+                  {/* Curva energia principale */}
+                  <path 
+                    d="M 100 300 Q 180 260 262.5 240 L 262.5 290 Q 360 240 425 190 Q 490 140 587.5 120 L 587.5 170 Q 650 120 700 75 Q 725 60 750 50" 
+                    stroke="url(#energyGradient)"
+                    strokeWidth="6"
                     fill="none"
-                    className="energy-line"
+                    strokeLinecap="round"
                   />
                   
-                  {/* Punti di transizione */}
-                  <circle cx="150" cy="200" r="8" fill="#6C5CE7" className="transition-point" />
-                  <circle cx="250" cy="150" r="8" fill="#74B9FF" className="transition-point" />
-                  <circle cx="350" cy="100" r="8" fill="#A29BFE" className="transition-point" />
+                  {/* Plateau di fusione */}
+                  <line x1="262.5" y1="240" x2="262.5" y2="290" stroke="#6C5CE7" strokeWidth="6" strokeLinecap="round" />
                   
-                  {/* Indicatore della temperatura corrente */}
+                  {/* Plateau di ebollizione */}
+                  <line x1="587.5" y1="120" x2="587.5" y2="170" stroke="#74B9FF" strokeWidth="6" strokeLinecap="round" />
+                  
+                  {/* Punti di transizione con alone */}
+                  <circle cx="262.5" cy="265" r="14" fill="#6C5CE7" opacity="0.3" />
+                  <circle cx="262.5" cy="265" r="8" fill="#6C5CE7" stroke="white" strokeWidth="2" />
+                  
+                  <circle cx="587.5" cy="145" r="14" fill="#74B9FF" opacity="0.3" />
+                  <circle cx="587.5" cy="145" r="8" fill="#74B9FF" stroke="white" strokeWidth="2" />
+                  
+                  {/* Indicatore temperatura corrente con animazione */}
                   <circle 
-                    cx={50 + (temperature + 50) * 2} 
-                    cy={250 - (temperature + 50) * 0.8} 
-                    r="10" 
-                    fill="#FF6B6B" 
+                    cx={100 + (temperature + 50) * 3.25}
+                    cy={Math.min(400 - ((temperature + 50) * 1.75), 50)}
+                    r="16"
+                    fill="#FF6B6B"
+                    opacity="0.3"
+                  />
+                  <circle 
+                    cx={100 + (temperature + 50) * 3.25}
+                    cy={Math.min(400 - ((temperature + 50) * 1.75), 50)}
+                    r="11"
+                    fill="#FF6B6B"
                     stroke="white"
-                    strokeWidth="2"
-                    className="current-temp-indicator"
+                    strokeWidth="3"
+                    filter="url(#shadow)"
                   />
                   
-                  {/* Etichette dei punti */}
-                  <text x="150" y="185" textAnchor="middle" className="point-label">Solido</text>
-                  <text x="250" y="135" textAnchor="middle" className="point-label">Liquido</text>
-                  <text x="350" y="85" textAnchor="middle" className="point-label">Gas</text>
+                  {/* Linea verticale dall'indicatore */}
+                  <line 
+                    x1={100 + (temperature + 50) * 3.25}
+                    y1={Math.min(400 - ((temperature + 50) * 1.75), 50)}
+                    x2={100 + (temperature + 50) * 3.25}
+                    y2="400"
+                    stroke="#FF6B6B"
+                    strokeWidth="2"
+                    strokeDasharray="4,4"
+                    opacity="0.5"
+                  />
                   
-                  {/* Etichette degli assi */}
-                  <text x="250" y="270" textAnchor="middle" className="axis-label">Temperatura (°C)</text>
-                  <text x="20" y="150" textAnchor="middle" className="axis-label" transform="rotate(-90 20 150)">Energia</text>
+                  {/* Etichette transizioni */}
+                  <text x="262.5" y="235" textAnchor="middle" fill="#6C5CE7" fontSize="14" fontWeight="bold">Fusione</text>
+                  <text x="262.5" y="305" textAnchor="middle" fill="#6C5CE7" fontSize="12">(0°C)</text>
                   
-                  {/* Valori sull'asse X - distribuiti su tutto lo spazio */}
-                  <text x="50" y="265" textAnchor="middle" className="axis-value">-50</text>
-                  <text x="150" y="265" textAnchor="middle" className="axis-value">0</text>
-                  <text x="250" y="265" textAnchor="middle" className="axis-value">50</text>
-                  <text x="350" y="265" textAnchor="middle" className="axis-value">100</text>
-                  <text x="450" y="265" textAnchor="middle" className="axis-value">150</text>
+                  <text x="587.5" y="115" textAnchor="middle" fill="#74B9FF" fontSize="14" fontWeight="bold">Ebollizione</text>
+                  <text x="587.5" y="185" textAnchor="middle" fill="#74B9FF" fontSize="12">(100°C)</text>
                   
-                  {/* Valori sull'asse Y */}
-                  <text x="40" y="255" textAnchor="middle" className="axis-value">0</text>
-                  <text x="40" y="200" textAnchor="middle" className="axis-value">50</text>
-                  <text x="40" y="150" textAnchor="middle" className="axis-value">100</text>
-                  <text x="40" y="100" textAnchor="middle" className="axis-value">150</text>
-                  <text x="40" y="60" textAnchor="middle" className="axis-value">200</text>
+                  {/* Etichette assi */}
+                  <text x="425" y="430" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#2c3e50">Temperatura (°C)</text>
+                  <text x="50" y="225" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#2c3e50" transform="rotate(-90 50 225)">Energia (J)</text>
                   
-                  {/* Etichette livelli energia */}
-                  <text x="35" y="60" textAnchor="middle" className="energy-level-label">Alta</text>
-                  <text x="35" y="150" textAnchor="middle" className="energy-level-label">Media</text>
-                  <text x="35" y="240" textAnchor="middle" className="energy-level-label">Bassa</text>
+                  {/* Valori asse X */}
+                  <text x="100" y="420" textAnchor="middle" fontSize="13" fill="#555">-50</text>
+                  <text x="262.5" y="420" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#6C5CE7">0</text>
+                  <text x="425" y="420" textAnchor="middle" fontSize="13" fill="#555">50</text>
+                  <text x="587.5" y="420" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#74B9FF">100</text>
+                  <text x="669" y="420" textAnchor="middle" fontSize="13" fill="#555">125</text>
+                  <text x="750" y="420" textAnchor="middle" fontSize="13" fill="#555">150</text>
+                  
+                  {/* Tick marks asse X */}
+                  <line x1="100" y1="400" x2="100" y2="408" stroke="#2c3e50" strokeWidth="2" />
+                  <line x1="262.5" y1="400" x2="262.5" y2="410" stroke="#6C5CE7" strokeWidth="3" />
+                  <line x1="425" y1="400" x2="425" y2="408" stroke="#2c3e50" strokeWidth="2" />
+                  <line x1="587.5" y1="400" x2="587.5" y2="410" stroke="#74B9FF" strokeWidth="3" />
+                  <line x1="669" y1="400" x2="669" y2="408" stroke="#2c3e50" strokeWidth="2" />
+                  <line x1="750" y1="400" x2="750" y2="408" stroke="#2c3e50" strokeWidth="2" />
+                  
+                  {/* Valori asse Y */}
+                  <text x="90" y="405" textAnchor="end" fontSize="13" fill="#555">0</text>
+                  <text x="90" y="330" textAnchor="end" fontSize="13" fill="#555">100</text>
+                  <text x="90" y="260" textAnchor="end" fontSize="13" fill="#555">200</text>
+                  <text x="90" y="190" textAnchor="end" fontSize="13" fill="#555">300</text>
+                  <text x="90" y="120" textAnchor="end" fontSize="13" fill="#555">400</text>
+                  <text x="90" y="55" textAnchor="end" fontSize="13" fill="#555">500</text>
+                  
+                  {/* Tick marks asse Y */}
+                  <line x1="93" y1="400" x2="100" y2="400" stroke="#2c3e50" strokeWidth="2" />
+                  <line x1="93" y1="330" x2="100" y2="330" stroke="#2c3e50" strokeWidth="2" />
+                  <line x1="93" y1="260" x2="100" y2="260" stroke="#2c3e50" strokeWidth="2" />
+                  <line x1="93" y1="190" x2="100" y2="190" stroke="#2c3e50" strokeWidth="2" />
+                  <line x1="93" y1="120" x2="100" y2="120" stroke="#2c3e50" strokeWidth="2" />
+                  <line x1="93" y1="50" x2="100" y2="50" stroke="#2c3e50" strokeWidth="2" />
+                  
+                  {/* Badge temperatura corrente */}
+                  <rect 
+                    x={Math.max(Math.min(100 + (temperature + 50) * 3.25 - 40, 710), 100)}
+                    y="12"
+                    width="80"
+                    height="24"
+                    rx="12"
+                    fill="#FF6B6B"
+                  />
+                  <text 
+                    x={Math.max(Math.min(100 + (temperature + 50) * 3.25, 750), 140)}
+                    y="27"
+                    textAnchor="middle"
+                    fontSize="14"
+                    fontWeight="bold"
+                    fill="white"
+                  >
+                    {temperature}°C
+                  </text>
                 </svg>
-                
-                {/* Legenda */}
-                <div className="diagram-legend">
-                  <div className="legend-item">
-                    <div className="legend-color" style={{backgroundColor: '#6C5CE7'}}></div>
-                    <span>Solido (T {'<'} 0°C)</span>
+              </div>
+            </div>
+          </div>
+          </div>
+          )}
+
+          {/* Simulazione 2: Pressione */}
+          {currentSimulation === 'pressure' && (
+          <div className="pressure-simulation">
+            <h4 style={{textAlign: 'center', color: '#667eea', marginBottom: '20px'}}>Vedi come la pressione influenza gli stati della materia!</h4>
+            
+            <div style={{background: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', maxWidth: '1000px', margin: '0 auto'}}>
+              <div style={{marginBottom: '30px'}}>
+                <label htmlFor="pressure-slider" style={{fontSize: '18px', fontWeight: '600', color: '#2c3e50'}}>
+                  Pressione: {pressure.toFixed(2)} atm
+                </label>
+                <input
+                  id="pressure-slider"
+                  type="range"
+                  min="0.1"
+                  max="5"
+                  step="0.1"
+                  value={pressure}
+                  onChange={(e) => setPressure(parseFloat(e.target.value))}
+                  style={{width: '100%', marginTop: '10px'}}
+                />
+                <div style={{display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#777', marginTop: '5px'}}>
+                  <span>0.1 atm</span>
+                  <span>1 atm (pressione normale)</span>
+                  <span>5 atm</span>
+                </div>
+              </div>
+
+              <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '30px'}}>
+                <div style={{background: pressure < 1 ? '#e8f5e9' : '#f5f5f5', padding: '20px', borderRadius: '12px', border: pressure < 1 ? '3px solid #4caf50' : '2px solid #ddd'}}>
+                  <h5 style={{color: '#4caf50', marginBottom: '10px'}}>⬇️ Bassa Pressione ({(pressure < 1).toString()})</h5>
+                  <p style={{fontSize: '14px', lineHeight: '1.6'}}>
+                    A pressione ridotta, il punto di ebollizione <strong>diminuisce</strong>. L'acqua può bollire anche a temperatura ambiente!
+                  </p>
+                  {pressure < 1 && <p style={{fontSize: '13px', color: '#4caf50', marginTop: '10px', fontWeight: '600'}}>✓ ATTIVO - L'acqua bolle più facilmente</p>}
+                </div>
+
+                <div style={{background: pressure >= 0.9 && pressure <= 1.1 ? '#e3f2fd' : '#f5f5f5', padding: '20px', borderRadius: '12px', border: pressure >= 0.9 && pressure <= 1.1 ? '3px solid #2196f3' : '2px solid #ddd'}}>
+                  <h5 style={{color: '#2196f3', marginBottom: '10px'}}>➡️ Pressione Normale</h5>
+                  <p style={{fontSize: '14px', lineHeight: '1.6'}}>
+                    A 1 atm (pressione atmosferica al livello del mare), l'acqua bolle a 100°C e congela a 0°C.
+                  </p>
+                  {pressure >= 0.9 && pressure <= 1.1 && <p style={{fontSize: '13px', color: '#2196f3', marginTop: '10px', fontWeight: '600'}}>✓ ATTIVO - Condizioni normali</p>}
+                </div>
+
+                <div style={{background: pressure > 1.1 ? '#fff3e0' : '#f5f5f5', padding: '20px', borderRadius: '12px', border: pressure > 1.1 ? '3px solid #ff9800' : '2px solid #ddd'}}>
+                  <h5 style={{color: '#ff9800', marginBottom: '10px'}}>⬆️ Alta Pressione</h5>
+                  <p style={{fontSize: '14px', lineHeight: '1.6'}}>
+                    Ad alta pressione, il punto di ebollizione <strong>aumenta</strong>. Nelle pentole a pressione l'acqua bolle a 120°C!
+                  </p>
+                  {pressure > 1.1 && <p style={{fontSize: '13px', color: '#ff9800', marginTop: '10px', fontWeight: '600'}}>✓ ATTIVO - L'acqua bolle più difficilmente</p>}
+                </div>
+              </div>
+
+              <div style={{marginTop: '30px', padding: '20px', background: '#f8f9fa', borderRadius: '12px'}}>
+                <h5 style={{color: '#2c3e50', marginBottom: '15px'}}>📊 Effetti della Pressione su H₂O</h5>
+                <div style={{display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', justifyContent: 'center'}}>
+                  <div style={{textAlign: 'center'}}>
+                    <div style={{fontSize: '28px'}}>❄️</div>
+                    <div style={{fontSize: '14px', fontWeight: '600'}}>Punto di Congelamento</div>
+                    <div style={{fontSize: '16px', color: '#667eea'}}>{(0 - pressure * 0.01).toFixed(2)}°C</div>
                   </div>
-                  <div className="legend-item">
-                    <div className="legend-color" style={{backgroundColor: '#74B9FF'}}></div>
-                    <span>Liquido (0°C {'≤'} T {'<'} 100°C)</span>
+                  <div style={{fontSize: '24px', color: '#ccc'}}>→</div>
+                  <div style={{textAlign: 'center'}}>
+                    <div style={{fontSize: '28px'}}>💧</div>
+                    <div style={{fontSize: '14px', fontWeight: '600'}}>Liquido</div>
+                    <div style={{fontSize: '13px', color: '#999'}}>Stabile</div>
                   </div>
-                  <div className="legend-item">
-                    <div className="legend-color" style={{backgroundColor: '#A29BFE'}}></div>
-                    <span>Gas (T {'≥'} 100°C)</span>
-                  </div>
-                  <div className="legend-item">
-                    <div className="legend-color" style={{backgroundColor: '#FF6B6B'}}></div>
-                    <span>Temperatura Attuale</span>
+                  <div style={{fontSize: '24px', color: '#ccc'}}>→</div>
+                  <div style={{textAlign: 'center'}}>
+                    <div style={{fontSize: '28px'}}>💨</div>
+                    <div style={{fontSize: '14px', fontWeight: '600'}}>Punto di Ebollizione</div>
+                    <div style={{fontSize: '16px', color: '#667eea'}}>{(100 + (pressure - 1) * 20).toFixed(0)}°C</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          )}
+
+          {/* Simulazione 3: Sostanze Diverse */}
+          {currentSimulation === 'substances' && (
+          <div className="substances-simulation">
+            <h4 style={{textAlign: 'center', color: '#667eea', marginBottom: '20px'}}>Confronta i punti di fusione e ebollizione di diverse sostanze!</h4>
+            
+            <div style={{background: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', maxWidth: '1200px', margin: '0 auto'}}>
+              <div style={{marginBottom: '30px'}}>
+                <label style={{fontSize: '18px', fontWeight: '600', color: '#2c3e50', display: 'block', marginBottom: '15px'}}>
+                  Seleziona una sostanza:
+                </label>
+                <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px'}}>
+                  {substances.map((substance) => (
+                    <button
+                      key={substance.id}
+                      onClick={() => setSelectedSubstance(substance.id)}
+                      style={{
+                        padding: '15px',
+                        borderRadius: '10px',
+                        border: selectedSubstance === substance.id ? `3px solid ${substance.color}` : '2px solid #ddd',
+                        background: selectedSubstance === substance.id ? `${substance.color}15` : 'white',
+                        cursor: 'pointer',
+                        fontWeight: '600',
+                        fontSize: '14px',
+                        transition: 'all 0.3s'
+                      }}
+                    >
+                      {substance.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {substances.filter(s => s.id === selectedSubstance).map((substance) => (
+                <div key={substance.id}>
+                  <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '30px'}}>
+                    <div style={{background: '#e3f2fd', padding: '25px', borderRadius: '12px'}}>
+                      <h5 style={{color: '#2196f3', marginBottom: '15px', fontSize: '18px'}}>❄️ Punto di Fusione</h5>
+                      <div style={{fontSize: '36px', fontWeight: 'bold', color: substance.color}}>{substance.meltingPoint}°C</div>
+                      <p style={{fontSize: '14px', color: '#555', marginTop: '10px'}}>Temperatura a cui passa da solido a liquido</p>
+                    </div>
+
+                    <div style={{background: '#fff3e0', padding: '25px', borderRadius: '12px'}}>
+                      <h5 style={{color: '#ff9800', marginBottom: '15px', fontSize: '18px'}}>💨 Punto di Ebollizione</h5>
+                      <div style={{fontSize: '36px', fontWeight: 'bold', color: substance.color}}>{substance.boilingPoint}°C</div>
+                      <p style={{fontSize: '14px', color: '#555', marginTop: '10px'}}>Temperatura a cui passa da liquido a gas</p>
+                    </div>
+                  </div>
+
+                  <div style={{background: '#f8f9fa', padding: '25px', borderRadius: '12px'}}>
+                    <h5 style={{color: '#2c3e50', marginBottom: '15px'}}>📈 Intervallo di Stati</h5>
+                    <div style={{position: 'relative', height: '80px', background: 'linear-gradient(90deg, #6C5CE7 0%, #74B9FF 33%, #A29BFE 66%, #FF6B6B 100%)', borderRadius: '10px', marginBottom: '15px'}}>
+                      <div style={{position: 'absolute', left: '33%', top: '0', bottom: '0', width: '2px', background: 'white'}}></div>
+                      <div style={{position: 'absolute', left: '66%', top: '0', bottom: '0', width: '2px', background: 'white'}}></div>
+                      <div style={{position: 'absolute', left: '0', bottom: '-25px', color: '#6C5CE7', fontWeight: '600', fontSize: '12px'}}>Solido</div>
+                      <div style={{position: 'absolute', left: '33%', bottom: '-40px', textAlign: 'center', transform: 'translateX(-50%)', fontWeight: '600', fontSize: '13px'}}>{substance.meltingPoint}°C</div>
+                      <div style={{position: 'absolute', left: '50%', bottom: '-25px', transform: 'translateX(-50%)', color: '#74B9FF', fontWeight: '600', fontSize: '12px'}}>Liquido</div>
+                      <div style={{position: 'absolute', left: '66%', bottom: '-40px', textAlign: 'center', transform: 'translateX(-50%)', fontWeight: '600', fontSize: '13px'}}>{substance.boilingPoint}°C</div>
+                      <div style={{position: 'absolute', right: '0', bottom: '-25px', color: '#A29BFE', fontWeight: '600', fontSize: '12px'}}>Gas</div>
+                    </div>
+                    <div style={{height: '40px'}}></div>
+                    <div style={{fontSize: '14px', color: '#555', lineHeight: '1.6'}}>
+                      ℹ️ Questa sostanza è <strong>solida</strong> sotto {substance.meltingPoint}°C, <strong>liquida</strong> tra {substance.meltingPoint}°C e {substance.boilingPoint}°C, e <strong>gassosa</strong> sopra {substance.boilingPoint}°C.
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          )}
+
+          {/* Simulazione 4: Evaporazione */}
+          {currentSimulation === 'evaporation' && (
+          <div className="evaporation-simulation">
+            <h4 style={{textAlign: 'center', color: '#667eea', marginBottom: '20px'}}>Scopri la differenza tra evaporazione ed ebollizione!</h4>
+            
+            <div style={{background: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', maxWidth: '1200px', margin: '0 auto'}}>
+              <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '25px', marginBottom: '30px'}}>
+                <div style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '30px', borderRadius: '15px', color: 'white', boxShadow: '0 4px 12px rgba(102, 126, 234, 0.4)'}}>
+                  <h5 style={{fontSize: '22px', marginBottom: '15px'}}>💧 Evaporazione</h5>
+                  <ul style={{fontSize: '15px', lineHeight: '1.8', paddingLeft: '20px'}}>
+                    <li>Avviene solo sulla <strong>superficie</strong> del liquido</li>
+                    <li>Può avvenire a <strong>qualsiasi temperatura</strong></li>
+                    <li>Processo <strong>lento e graduale</strong></li>
+                    <li>Solo le molecole più energetiche fuggono</li>
+                    <li>Es: pozzanghera che si asciuga</li>
+                  </ul>
+                  <div style={{marginTop: '20px', padding: '15px', background: 'rgba(255,255,255,0.2)', borderRadius: '10px', textAlign: 'center'}}>
+                    <div style={{fontSize: '40px', marginBottom: '10px'}}>💧 💧 💧</div>
+                    <div style={{fontSize: '30px'}}>↑ ↑ ↑</div>
+                    <div style={{fontSize: '13px', marginTop: '10px'}}>Solo dalla superficie</div>
+                  </div>
+                </div>
+
+                <div style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', padding: '30px', borderRadius: '15px', color: 'white', boxShadow: '0 4px 12px rgba(240, 147, 251, 0.4)'}}>
+                  <h5 style={{fontSize: '22px', marginBottom: '15px'}}>🔥 Ebollizione</h5>
+                  <ul style={{fontSize: '15px', lineHeight: '1.8', paddingLeft: '20px'}}>
+                    <li>Avviene in <strong>tutto il volume</strong> del liquido</li>
+                    <li>Solo alla <strong>temperatura di ebollizione</strong></li>
+                    <li>Processo <strong>rapido e tumultuoso</strong></li>
+                    <li>Formazione di bolle di vapore</li>
+                    <li>Es: pentola d'acqua che bolle</li>
+                  </ul>
+                  <div style={{marginTop: '20px', padding: '15px', background: 'rgba(255,255,255,0.2)', borderRadius: '10px', textAlign: 'center'}}>
+                    <div style={{fontSize: '40px', marginBottom: '10px'}}>🫧 🫧 🫧</div>
+                    <div style={{fontSize: '30px'}}>↑ ↑ ↑ ↑ ↑ ↑</div>
+                    <div style={{fontSize: '13px', marginTop: '10px'}}>Da tutto il liquido</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{background: '#f8f9fa', padding: '25px', borderRadius: '12px'}}>
+                <h5 style={{color: '#2c3e50', marginBottom: '20px', fontSize: '18px'}}>🔬 Confronto Velocità</h5>
+                <div style={{display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center'}}>
+                  <div style={{flex: '1', minWidth: '200px', textAlign: 'center'}}>
+                    <div style={{fontSize: '16px', fontWeight: '600', color: '#667eea', marginBottom: '10px'}}>Evaporazione</div>
+                    <div style={{height: '30px', background: '#667eea', borderRadius: '15px', width: '40%', margin: '0 auto'}}></div>
+                    <div style={{fontSize: '14px', color: '#999', marginTop: '8px'}}>Lenta</div>
+                  </div>
+                  <div style={{fontSize: '24px', color: '#ccc'}}>VS</div>
+                  <div style={{flex: '1', minWidth: '200px', textAlign: 'center'}}>
+                    <div style={{fontSize: '16px', fontWeight: '600', color: '#f5576c', marginBottom: '10px'}}>Ebollizione</div>
+                    <div style={{height: '30px', background: '#f5576c', borderRadius: '15px', width: '100%', margin: '0 auto'}}></div>
+                    <div style={{fontSize: '14px', color: '#999', marginTop: '8px'}}>Rapida</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{marginTop: '25px', padding: '20px', background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)', borderRadius: '12px', border: '2px solid #667eea'}}>
+                <h5 style={{color: '#2c3e50', marginBottom: '10px'}}>💡 Curiosità</h5>
+                <p style={{fontSize: '14px', color: '#333', lineHeight: '1.7'}}>
+                  Anche il ghiaccio può evaporare direttamente allo stato gassoso (sublimazione)! È per questo che i cubetti di ghiaccio nel freezer "scompaiono" lentamente nel tempo, anche se non si sciolgono.
+                </p>
+              </div>
+            </div>
+          </div>
+          )}
+
         </div>
       )}
 
