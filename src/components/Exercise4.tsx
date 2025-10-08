@@ -305,8 +305,6 @@ const Exercise4: React.FC = () => {
   };
 
   const getParticlePosition = (index: number, total: number, state: string) => {
-    const positions = [];
-    
     if (state === 'solid') {
       // Particelle ordinate in una griglia
       const cols = Math.ceil(Math.sqrt(total));
