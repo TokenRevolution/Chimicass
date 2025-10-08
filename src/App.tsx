@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Exercise1 from './components/Exercise1';
 import Exercise2 from './components/Exercise2';
 import Exercise3 from './components/Exercise3';
+import Exercise4 from './components/Exercise4';
 
 const App: React.FC = () => {
   const [currentExercise, setCurrentExercise] = useState<number>(1);
@@ -12,7 +13,7 @@ const App: React.FC = () => {
     { id: 1, title: "Grandezze Fondamentali e Derivate", component: Exercise1 },
     { id: 2, title: "Sostanze, Composti e Miscugli", component: Exercise2 },
     { id: 3, title: "Calcoli con Grandezze Fondamentali", component: Exercise3 },
-    { id: 4, title: "Esercizio 4", component: null }
+    { id: 4, title: "Stati della Materia ed Energia", component: Exercise4 }
   ];
 
   const CurrentComponent = exercises.find(ex => ex.id === currentExercise)?.component;

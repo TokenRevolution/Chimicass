@@ -378,51 +378,276 @@ export const questionsDatabase: Question[] = [
     difficulty: "medium"
   },
 
-  // STATI DELLA MATERIA
+  // STATI DELLA MATERIA ED ENERGIA
   {
-    id: 21,
-    question: "Quali sono i tre stati fondamentali della materia?",
-    options: ["Solido, liquido, gassoso", "Caldo, freddo, tiepido", "Acido, basico, neutro", "Leggero, pesante, medio"],
+    id: 71,
+    question: "Quali sono i quattro stati della materia?",
+    options: ["Solido, liquido, gas, plasma", "Caldo, freddo, tiepido, neutro", "Acido, basico, neutro, salato", "Leggero, pesante, medio, variabile"],
     correctAnswer: 0,
-    explanation: "I tre stati fondamentali della materia sono solido, liquido e gassoso.",
-    category: "stati",
+    explanation: "I quattro stati della materia sono: solido, liquido, gas e plasma.",
+    category: "stati-materia",
     difficulty: "easy"
   },
   {
-    id: 22,
-    question: "Il passaggio da solido a liquido si chiama:",
-    options: ["Evaporazione", "Fusione", "Condensazione", "Sublimazione"],
+    id: 72,
+    question: "Nel passaggio da solido a liquido l'energia viene:",
+    options: ["Rilasciata", "Assorbita", "Distrutta", "Creata"],
     correctAnswer: 1,
-    explanation: "Il passaggio da solido a liquido si chiama fusione.",
-    category: "stati",
+    explanation: "Durante la fusione (solido → liquido) l'energia viene assorbita per rompere i legami tra le particelle.",
+    category: "stati-materia",
+    difficulty: "medium"
+  },
+  {
+    id: 73,
+    question: "Quale stato della materia ha particelle molto vicine e ordinate?",
+    options: ["Gas", "Liquido", "Solido", "Plasma"],
+    correctAnswer: 2,
+    explanation: "Nel solido le particelle sono molto vicine e disposte in modo ordinato.",
+    category: "stati-materia",
     difficulty: "easy"
   },
   {
-    id: 23,
-    question: "Il passaggio da liquido a gas si chiama:",
-    options: ["Fusione", "Evaporazione", "Condensazione", "Solidificazione"],
+    id: 74,
+    question: "Il passaggio diretto da solido a gas si chiama:",
+    options: ["Evaporazione", "Fusione", "Sublimazione", "Condensazione"],
+    correctAnswer: 2,
+    explanation: "La sublimazione è il passaggio diretto da solido a gas senza passare per lo stato liquido.",
+    category: "stati-materia",
+    difficulty: "medium"
+  },
+  {
+    id: 75,
+    question: "Quale stato della materia ha volume e forma variabili?",
+    options: ["Solido", "Liquido", "Gas", "Tutti i precedenti"],
+    correctAnswer: 2,
+    explanation: "Il gas ha sia volume che forma variabili, si espande per riempire tutto lo spazio disponibile.",
+    category: "stati-materia",
+    difficulty: "easy"
+  },
+  {
+    id: 76,
+    question: "Durante la condensazione (gas → liquido) l'energia viene:",
+    options: ["Assorbita", "Rilasciata", "Trasformata", "Distrutta"],
     correctAnswer: 1,
-    explanation: "Il passaggio da liquido a gas si chiama evaporazione.",
-    category: "stati",
+    explanation: "Durante la condensazione l'energia viene rilasciata sotto forma di calore.",
+    category: "stati-materia",
+    difficulty: "medium"
+  },
+  {
+    id: 77,
+    question: "Il punto di ebollizione dell'acqua è:",
+    options: ["0°C", "25°C", "100°C", "273°C"],
+    correctAnswer: 2,
+    explanation: "Il punto di ebollizione dell'acqua è 100°C alla pressione atmosferica standard.",
+    category: "stati-materia",
     difficulty: "easy"
   },
   {
-    id: 24,
-    question: "Quale stato della materia ha volume e forma definiti?",
-    options: ["Solido", "Liquido", "Gas", "Plasma"],
+    id: 78,
+    question: "Quale esempio rappresenta meglio il plasma?",
+    options: ["Ghiaccio", "Acqua", "Vapore", "Fulmine"],
+    correctAnswer: 3,
+    explanation: "Il fulmine è un esempio di plasma, uno stato della materia con particelle ionizzate.",
+    category: "stati-materia",
+    difficulty: "medium"
+  },
+  {
+    id: 79,
+    question: "Nel liquido le particelle sono:",
+    options: ["Fisse e ordinate", "Vicine ma mobili", "Molto distanti", "Ionizzate"],
+    correctAnswer: 1,
+    explanation: "Nel liquido le particelle sono vicine tra loro ma possono muoversi liberamente.",
+    category: "stati-materia",
+    difficulty: "easy"
+  },
+  {
+    id: 80,
+    question: "La deposizione è il passaggio da:",
+    options: ["Gas a solido", "Solido a gas", "Liquido a solido", "Gas a liquido"],
     correctAnswer: 0,
-    explanation: "Il solido ha sia volume che forma definiti.",
-    category: "stati",
+    explanation: "La deposizione è il passaggio diretto da gas a solido, come la formazione della brina.",
+    category: "stati-materia",
+    difficulty: "hard"
+  },
+  {
+    id: 81,
+    question: "Quale tipo di energia è associata al movimento delle particelle?",
+    options: ["Energia potenziale", "Energia cinetica", "Energia chimica", "Energia nucleare"],
+    correctAnswer: 1,
+    explanation: "L'energia cinetica è associata al movimento delle particelle.",
+    category: "energia",
     difficulty: "easy"
   },
   {
-    id: 25,
-    question: "Quale stato della materia ha volume definito ma forma variabile?",
-    options: ["Solido", "Liquido", "Gas", "Plasma"],
+    id: 82,
+    question: "L'energia immagazzinata nei legami chimici si chiama:",
+    options: ["Energia cinetica", "Energia potenziale", "Energia chimica", "Energia termica"],
+    correctAnswer: 2,
+    explanation: "L'energia chimica è l'energia immagazzinata nei legami chimici tra gli atomi.",
+    category: "energia",
+    difficulty: "medium"
+  },
+  {
+    id: 83,
+    question: "Quale unità si usa per misurare l'energia?",
+    options: ["Watt (W)", "Joule (J)", "Newton (N)", "Pascal (Pa)"],
     correctAnswer: 1,
-    explanation: "Il liquido ha volume definito ma forma variabile (si adatta al contenitore).",
-    category: "stati",
+    explanation: "Il Joule (J) è l'unità di misura dell'energia nel Sistema Internazionale.",
+    category: "energia",
     difficulty: "easy"
+  },
+  {
+    id: 84,
+    question: "L'energia del Sole proviene principalmente da:",
+    options: ["Reazioni chimiche", "Reazioni nucleari", "Combustione", "Fotovoltaico"],
+    correctAnswer: 1,
+    explanation: "L'energia del Sole proviene dalle reazioni nucleari di fusione che avvengono nel suo nucleo.",
+    category: "energia",
+    difficulty: "medium"
+  },
+  {
+    id: 85,
+    question: "Quale tipo di energia è associata alla temperatura?",
+    options: ["Energia cinetica", "Energia potenziale", "Energia termica", "Energia elettrica"],
+    correctAnswer: 2,
+    explanation: "L'energia termica è associata alla temperatura e al movimento delle particelle.",
+    category: "energia",
+    difficulty: "easy"
+  },
+  {
+    id: 86,
+    question: "L'energia potenziale gravitazionale dipende da:",
+    options: ["Solo dalla massa", "Solo dall'altezza", "Massa, altezza e accelerazione di gravità", "Solo dalla velocità"],
+    correctAnswer: 2,
+    explanation: "L'energia potenziale gravitazionale dipende da massa, altezza e accelerazione di gravità (Ep = mgh).",
+    category: "energia",
+    difficulty: "medium"
+  },
+  {
+    id: 87,
+    question: "Quale trasformazione energetica avviene in una batteria?",
+    options: ["Chimica → Elettrica", "Elettrica → Chimica", "Termica → Elettrica", "Nucleare → Elettrica"],
+    correctAnswer: 0,
+    explanation: "In una batteria l'energia chimica viene trasformata in energia elettrica.",
+    category: "trasformazioni",
+    difficulty: "medium"
+  },
+  {
+    id: 88,
+    question: "Nel motore di un'automobile avviene la trasformazione:",
+    options: ["Chimica → Meccanica", "Elettrica → Chimica", "Termica → Elettrica", "Nucleare → Termica"],
+    correctAnswer: 0,
+    explanation: "Nel motore l'energia chimica del combustibile viene trasformata in energia meccanica.",
+    category: "trasformazioni",
+    difficulty: "easy"
+  },
+  {
+    id: 89,
+    question: "Quale principio afferma che l'energia non si crea né si distrugge?",
+    options: ["Principio di Archimede", "Principio di conservazione dell'energia", "Principio di Pascal", "Principio di Bernoulli"],
+    correctAnswer: 1,
+    explanation: "Il principio di conservazione dell'energia afferma che l'energia non si crea né si distrugge, ma si trasforma.",
+    category: "trasformazioni",
+    difficulty: "medium"
+  },
+  {
+    id: 90,
+    question: "Quale esempio rappresenta una trasformazione di energia cinetica in energia termica?",
+    options: ["Batteria che si carica", "Freni di un'automobile", "Motore elettrico", "Pannello solare"],
+    correctAnswer: 1,
+    explanation: "Quando si frenano le ruote di un'automobile, l'energia cinetica si trasforma in energia termica per attrito.",
+    category: "trasformazioni",
+    difficulty: "medium"
+  },
+  {
+    id: 91,
+    question: "Quale stato della materia ha la maggiore energia cinetica delle particelle?",
+    options: ["Solido", "Liquido", "Gas", "Plasma"],
+    correctAnswer: 3,
+    explanation: "Il plasma ha la maggiore energia cinetica delle particelle, che sono ionizzate e molto energetiche.",
+    category: "stati-materia",
+    difficulty: "hard"
+  },
+  {
+    id: 92,
+    question: "Il punto di fusione del ghiaccio è:",
+    options: ["-10°C", "0°C", "10°C", "100°C"],
+    correctAnswer: 1,
+    explanation: "Il punto di fusione del ghiaccio è 0°C alla pressione atmosferica standard.",
+    category: "stati-materia",
+    difficulty: "easy"
+  },
+  {
+    id: 93,
+    question: "Quale tipo di energia è associata alle cariche elettriche in movimento?",
+    options: ["Energia chimica", "Energia elettrica", "Energia termica", "Energia nucleare"],
+    correctAnswer: 1,
+    explanation: "L'energia elettrica è associata alle cariche elettriche in movimento.",
+    category: "energia",
+    difficulty: "easy"
+  },
+  {
+    id: 94,
+    question: "Durante l'evaporazione l'energia viene:",
+    options: ["Rilasciata", "Assorbita", "Distrutta", "Creata"],
+    correctAnswer: 1,
+    explanation: "Durante l'evaporazione l'energia viene assorbita per vincere le forze intermolecolari.",
+    category: "stati-materia",
+    difficulty: "medium"
+  },
+  {
+    id: 95,
+    question: "Quale esempio rappresenta meglio l'energia potenziale?",
+    options: ["Automobile in movimento", "Palla in alto", "Fuoco che brucia", "Corrente elettrica"],
+    correctAnswer: 1,
+    explanation: "Una palla in alto ha energia potenziale gravitazionale che può essere trasformata in energia cinetica.",
+    category: "energia",
+    difficulty: "easy"
+  },
+  {
+    id: 96,
+    question: "Nel passaggio da liquido a solido l'energia viene:",
+    options: ["Assorbita", "Rilasciata", "Trasformata", "Distrutta"],
+    correctAnswer: 1,
+    explanation: "Durante la solidificazione (liquido → solido) l'energia viene rilasciata sotto forma di calore.",
+    category: "stati-materia",
+    difficulty: "medium"
+  },
+  {
+    id: 97,
+    question: "Quale trasformazione energetica avviene in una lampadina?",
+    options: ["Chimica → Luminosa", "Elettrica → Luminosa", "Termica → Elettrica", "Nucleare → Luminosa"],
+    correctAnswer: 1,
+    explanation: "In una lampadina l'energia elettrica viene trasformata in energia luminosa (e termica).",
+    category: "trasformazioni",
+    difficulty: "easy"
+  },
+  {
+    id: 98,
+    question: "Quale stato della materia ha particelle ionizzate?",
+    options: ["Solido", "Liquido", "Gas", "Plasma"],
+    correctAnswer: 3,
+    explanation: "Il plasma è caratterizzato da particelle ionizzate (elettroni e ioni separati).",
+    category: "stati-materia",
+    difficulty: "medium"
+  },
+  {
+    id: 99,
+    question: "L'energia cinetica di un oggetto dipende da:",
+    options: ["Solo dalla massa", "Solo dalla velocità", "Massa e velocità", "Solo dall'altezza"],
+    correctAnswer: 2,
+    explanation: "L'energia cinetica dipende sia dalla massa che dalla velocità: Ek = ½mv².",
+    category: "energia",
+    difficulty: "medium"
+  },
+  {
+    id: 100,
+    question: "Quale esempio rappresenta una trasformazione di energia termica in energia meccanica?",
+    options: ["Motore elettrico", "Motore a vapore", "Batteria", "Pannello solare"],
+    correctAnswer: 1,
+    explanation: "In un motore a vapore l'energia termica del vapore viene trasformata in energia meccanica.",
+    category: "trasformazioni",
+    difficulty: "hard"
   },
 
   // REAZIONI CHIMICHE
