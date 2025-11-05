@@ -1,0 +1,2756 @@
+/* Exercise5.css - Metodi di Separazione dei Miscugli */
+
+.exercise5 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.exercise-header {
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.exercise-header h2 {
+  margin: 0 0 20px 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.section-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.tab.active {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Teoria Section */
+.theory-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.theory-intro {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+  color: white;
+  border-radius: 15px;
+}
+
+.theory-intro h3 {
+  margin: 0 0 20px 0;
+  font-size: 2rem;
+}
+
+.theory-intro p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+.methods-grid h4 {
+  text-align: center;
+  margin: 40px 0 30px 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.methods-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.method-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid var(--method-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.method-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--method-color);
+}
+
+.method-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.method-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.method-icon {
+  font-size: 2.5rem;
+  margin-right: 15px;
+}
+
+.method-header h5 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--method-color);
+  font-weight: 700;
+}
+
+.method-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.method-principle,
+.method-steps,
+.method-examples,
+.method-applications {
+  margin-bottom: 20px;
+}
+
+.method-principle h6,
+.method-steps h6,
+.method-examples h6,
+.method-applications h6 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.method-principle p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.method-steps ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.method-steps li {
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.examples-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.example-tag {
+  background: var(--method-color);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.method-applications ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.method-applications li {
+  padding: 5px 0;
+  color: #555;
+  position: relative;
+  padding-left: 20px;
+}
+
+.method-applications li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--method-color);
+  font-weight: bold;
+}
+
+/* Simulazione Section */
+.simulation-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.simulation-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border-radius: 15px;
+}
+
+.simulation-header h3 {
+  margin: 0 0 15px 0;
+  font-size: 2rem;
+}
+
+.method-selector {
+  margin-bottom: 30px;
+}
+
+.method-selector h4 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.method-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.method-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 20px;
+  background: white;
+  border: 2px solid var(--method-color);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.method-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.method-btn.active {
+  background: var(--method-color);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.method-btn-icon {
+  font-size: 2rem;
+}
+
+.method-btn-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.animation-container {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
+.animation-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.play-btn,
+.reset-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.play-btn {
+  background: #28a745;
+  color: white;
+}
+
+.play-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.play-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.animation-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.visual-animation {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Filtrazione Animation - Migliorata */
+.filtration-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtration-setup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.funnel-container {
+  width: 200px;
+  height: 250px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.funnel {
+  width: 150px;
+  height: 180px;
+  background: linear-gradient(to bottom, #e0e0e0 0%, #bdbdbd 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  position: relative;
+  border: 2px solid #999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.filter-paper {
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  right: 15%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0 0 3px 3px;
+  border: 1px solid #ccc;
+}
+
+.mixture {
+  position: absolute;
+  bottom: 20px;
+  left: 20%;
+  right: 20%;
+  background: linear-gradient(to bottom, rgba(139, 69, 19, 0.9) 0%, rgba(100, 150, 255, 0.7) 50%);
+  transition: height 0.1s linear;
+  border-radius: 0 0 3px 3px;
+  overflow: hidden;
+}
+
+.solid-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.solid-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(139, 69, 19, 0.9);
+  border-radius: 50%;
+  animation: particleSettle 2s ease-out forwards;
+}
+
+@keyframes particleSettle {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.liquid-layer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  background: rgba(100, 150, 255, 0.6);
+}
+
+.drops-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 100px;
+}
+
+.drop {
+  position: absolute;
+  width: 6px;
+  height: 8px;
+  background: rgba(100, 150, 255, 0.9);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: dropFall 1s linear infinite;
+}
+
+@keyframes dropFall {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 100px;
+    opacity: 0.7;
+  }
+}
+
+.filtrate-container {
+  width: 100px;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.filtrate-beaker {
+  width: 80px;
+  height: 120px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.filtrate-liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.8);
+  transition: height 0.1s linear;
+  border-radius: 0 0 7px 7px;
+}
+
+.liquid-waves {
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  height: 10px;
+  background: rgba(100, 150, 255, 0.6);
+  border-radius: 50%;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+/* Centrifugazione Animation - Migliorata */
+.centrifugation-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centrifuge-machine {
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.centrifuge-rotor {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centrifuge-rotor.spinning {
+  animation: spinFast 0.5s linear infinite;
+}
+
+@keyframes spinFast {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.centrifuge-tube {
+  position: absolute;
+  width: 35px;
+  height: 100px;
+  background: rgba(200, 200, 200, 0.4);
+  border: 2px solid #666;
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+}
+
+.tube-1 {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.tube-2 {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.tube-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sediment-layer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(139, 69, 19, 0.9);
+  transition: height 0.1s linear;
+  border-radius: 0 0 3px 3px;
+}
+
+.sediment-particles {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.3) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.supernatant-layer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.5);
+  transition: height 0.1s linear;
+}
+
+.supernatant-particles {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0.5px, transparent 0.5px);
+  background-size: 6px 6px;
+}
+
+.centrifuge-base {
+  width: 180px;
+  height: 30px;
+  background: linear-gradient(to bottom, #666 0%, #333 100%);
+  border-radius: 5px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Estrazione Animation - Migliorata */
+.extraction-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.extraction-setup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.separatory-funnel {
+  width: 120px;
+  height: 300px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 60px 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.mixed-phase {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 200, 0, 0.5) 0%, rgba(100, 150, 255, 0.5) 100%);
+  position: relative;
+}
+
+.mixing-bubbles {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bubble {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: bubbleRise 2s ease-in-out infinite;
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50px) scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.organic-layer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 200, 0, 0.7);
+  transition: height 0.1s linear;
+  border-radius: 60px 60px 0 0;
+}
+
+.organic-molecules {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255, 150, 0, 0.4) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.interface-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: top 0.1s linear;
+  z-index: 10;
+}
+
+.aqueous-layer {
+  position: absolute;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.7);
+  transition: height 0.1s linear, top 0.1s linear;
+  border-radius: 0 0 60px 60px;
+}
+
+.aqueous-molecules {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(100, 150, 255, 0.5) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+.stopcock {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: rgba(100, 100, 100, 0.8);
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.stopcock-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 15px;
+  height: 3px;
+  background: rgba(200, 200, 200, 0.9);
+}
+
+.extracted-container {
+  width: 80px;
+  height: 120px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.extracted-liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.8);
+  transition: height 0.1s linear;
+  border-radius: 0 0 7px 7px;
+}
+
+/* Decantazione Animation - Migliorata */
+.decantation-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Distillazione Animation */
+.distillation-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.distillation-apparatus {
+  width: 200px;
+  height: 350px;
+  position: relative;
+}
+
+.flask {
+  width: 100px;
+  height: 120px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 50px 50px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.liquid-mixture {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(139, 69, 19, 0.6) 0%, rgba(100, 150, 255, 0.4) 100%);
+  transition: height 2s ease;
+  border-radius: 0 0 47px 47px;
+}
+
+.bubbles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 3px, transparent 3px);
+  background-size: 15px 15px;
+  animation: bubble 2s linear infinite;
+}
+
+@keyframes bubble {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
+.condenser {
+  width: 60px;
+  height: 120px;
+  background: rgba(200, 200, 200, 0.5);
+  border: 2px solid #666;
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.vapor {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80%;
+  background: rgba(200, 200, 200, 0.6);
+  transition: opacity 1s ease;
+}
+
+.condensate {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.8);
+  transition: height 2s ease;
+}
+
+.distillate-collector {
+  width: 80px;
+  background: rgba(100, 150, 255, 0.6);
+  border-radius: 5px 5px 0 0;
+  position: absolute;
+  bottom: 240px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: height 2s ease;
+}
+
+.distillate {
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 150, 255, 0.9);
+}
+
+/* Cristallizzazione Animation */
+.crystallization-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evaporation-dish {
+  width: 200px;
+  height: 100px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 100px 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.6);
+  transition: height 2s ease;
+  border-radius: 0 0 97px 97px;
+}
+
+.crystals {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease;
+}
+
+.crystal {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: crystalGrow 1s ease-out;
+}
+
+@keyframes crystalGrow {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Cromatografia Animation */
+.chromatography-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chromatography-strip {
+  width: 60px;
+  height: 300px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 2px solid #666;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spot {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 0, 0, 0.8);
+  border-radius: 50%;
+  transition: opacity 0.5s ease;
+}
+
+.bands {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  transition: height 2s ease;
+}
+
+.band {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 3px;
+  transition: height 2s ease;
+}
+
+.band-1 {
+  background: rgba(255, 0, 0, 0.8);
+  top: 0;
+}
+
+.band-2 {
+  background: rgba(0, 255, 0, 0.8);
+  top: 30px;
+}
+
+.band-3 {
+  background: rgba(0, 0, 255, 0.8);
+  top: 60px;
+}
+
+.solvent-front {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(100, 150, 255, 0.8);
+  transition: top 2s ease;
+}
+
+/* Setacciatura Animation */
+.sieving-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sieve-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sieve {
+  width: 200px;
+  height: 80px;
+  background: rgba(200, 200, 200, 0.5);
+  border: 3px solid #666;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sieve.shaking {
+  animation: shake 0.5s linear infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.large-particles,
+.small-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease;
+}
+
+.large-particle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(139, 69, 19, 0.8);
+  border-radius: 50%;
+}
+
+.small-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(139, 69, 19, 0.6);
+  border-radius: 50%;
+}
+
+.collected-particles {
+  width: 200px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 2px solid #666;
+  border-radius: 5px 5px 0 0;
+  transition: height 2s ease;
+}
+
+.small-particles-collected {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(139, 69, 19, 0.6) 2px, transparent 2px);
+  background-size: 10px 10px;
+}
+
+/* Imantazione Animation */
+.magnetization-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.magnet-container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+
+.mixture-particles {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.magnetic-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 2s ease;
+}
+
+.magnetic-particle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: rgba(139, 69, 19, 0.9);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 0, 0, 0.5);
+}
+
+.non-magnetic-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.non-magnetic-particle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(100, 100, 100, 0.6);
+  border-radius: 50%;
+}
+
+.magnet {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  transition: opacity 0.5s ease;
+}
+
+/* Sublimazione Animation */
+.sublimation-animation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.sublimation-setup {
+  width: 200px;
+  height: 300px;
+  position: relative;
+}
+
+.heating-container {
+  width: 120px;
+  height: 150px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 60px 60px;
+  position: absolute;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.solid-sample {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(139, 69, 19, 0.8);
+  transition: height 2s ease;
+  border-radius: 0 0 57px 57px;
+}
+
+.vapor-cloud {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 80px;
+  transition: opacity 1s ease;
+}
+
+.vapor-particle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(200, 200, 200, 0.6);
+  border-radius: 50%;
+  animation: vaporRise 2s linear infinite;
+}
+
+.vapor-particle:nth-child(1) {
+  left: 20px;
+  animation-delay: 0s;
+}
+
+.vapor-particle:nth-child(2) {
+  left: 50px;
+  animation-delay: 0.5s;
+}
+
+.vapor-particle:nth-child(3) {
+  left: 80px;
+  animation-delay: 1s;
+}
+
+@keyframes vaporRise {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.cold-surface {
+  width: 150px;
+  height: 80px;
+  background: rgba(200, 220, 255, 0.5);
+  border: 3px solid #666;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.condensed-solid {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 1s ease;
+}
+
+.crystal-form {
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: crystalGrow 1s ease-out;
+}
+
+.animation-info {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.animation-info h4 {
+  margin: 0 0 15px 0;
+  font-size: 1.8rem;
+  color: var(--method-color);
+}
+
+.animation-info p {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.progress-bar-container {
+  margin: 20px 0;
+  position: relative;
+}
+
+.animation-progress-bar {
+  width: 100%;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.animation-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--progress, 0%);
+  height: 100%;
+  background: linear-gradient(90deg, var(--method-color) 0%, var(--method-color) 100%);
+  transition: width 0.1s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+  z-index: 1;
+}
+
+.commentary-box {
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
+  border-left: 4px solid var(--method-color);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: commentaryPulse 2s ease-in-out infinite;
+}
+
+@keyframes commentaryPulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+  }
+}
+
+.commentary-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.commentary-text {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  font-weight: 500;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.method-details {
+  margin-top: 20px;
+}
+
+.detail-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.detail-item strong {
+  color: var(--method-color);
+}
+
+/* Pratico Section */
+.practical-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.practical-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #95E1D3 0%, #FCE38A 100%);
+  color: #333;
+  border-radius: 15px;
+}
+
+.practical-header h3 {
+  margin: 0 0 15px 0;
+  font-size: 2rem;
+}
+
+.practical-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.practical-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid var(--method-color);
+  transition: all 0.3s ease;
+}
+
+.practical-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.practical-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.practical-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.practical-card-header h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--method-color);
+  font-weight: 700;
+}
+
+.practical-content {
+  color: #555;
+}
+
+.practical-example,
+.practical-steps,
+.practical-applications {
+  margin-bottom: 20px;
+}
+
+.practical-example h5,
+.practical-steps h5,
+.practical-applications h5 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.practical-example p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.practical-steps ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.practical-steps li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.practical-applications ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.practical-applications li {
+  padding: 5px 0;
+  position: relative;
+  padding-left: 20px;
+}
+
+.practical-applications li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--method-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Esercizi Section - Stili simili a Exercise4 */
+.exercises-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-progress {
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  color: #666;
+  font-weight: 600;
+}
+
+.exercise-card {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-difficulty {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.difficulty-badge {
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+.difficulty-badge.easy {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.difficulty-badge.medium {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.difficulty-badge.hard {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.exercise-card h3 {
+  margin: 0 0 25px 0;
+  font-size: 1.4rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.options {
+  display: grid;
+  gap: 15px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.option:hover {
+  border-color: #4facfe;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.option.selected {
+  border-color: #4facfe;
+  background: #e3f2fd;
+}
+
+.option-letter {
+  background: #4facfe;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 1rem;
+  color: #333;
+}
+
+.exercise-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.nav-btn.prev {
+  background: #6c757d;
+  color: white;
+}
+
+.nav-btn.next {
+  background: #4facfe;
+  color: white;
+}
+
+.nav-btn.check {
+  background: #28a745;
+  color: white;
+}
+
+.nav-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Risultati */
+.results-section {
+  text-align: center;
+}
+
+.score-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.score-card h3 {
+  margin: 0 0 30px 0;
+  font-size: 2rem;
+}
+
+.score-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.score-circle {
+  display: flex;
+  align-items: baseline;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.score-number {
+  font-size: 4rem;
+}
+
+.score-total {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.score-percentage {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.score-message {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.answers-review {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.answers-review h4 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.answer-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.question-review {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.difficulty-indicator {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.answer-review {
+  margin-bottom: 15px;
+}
+
+.user-answer,
+.correct-answer {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-answer.correct {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #4caf50;
+}
+
+.user-answer.incorrect {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #f44336;
+}
+
+.correct-answer {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #2196f3;
+}
+
+.answer-label {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.explanation {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  color: #555;
+  font-style: italic;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.action-btn.reset {
+  background: #ffc107;
+  color: #333;
+}
+
+.action-btn.simulation {
+  background: #17a2b8;
+  color: white;
+}
+
+.action-btn.theory {
+  background: #6f42c1;
+  color: white;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Stili aggiuntivi per animazioni migliorate - Decantazione */
+.decantation-setup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.beaker-original, .beaker-decanted {
+  width: 100px;
+  height: 200px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.beaker-label {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.beaker-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.suspension {
+  width: 100%;
+  height: 100%;
+  background: rgba(139, 69, 19, 0.4);
+  position: relative;
+}
+
+.suspended-particles {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.suspended-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(139, 69, 19, 0.8);
+  border-radius: 50%;
+  animation: sedimentFall 3s ease-out forwards;
+}
+
+@keyframes sedimentFall {
+  to { transform: translateY(80px); }
+}
+
+.layer-particles, .settled-particles {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.pouring-stream {
+  width: 4px;
+  height: 60px;
+  background: rgba(100, 150, 255, 0.8);
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  animation: pour 2s ease-in-out infinite;
+}
+
+@keyframes pour {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.decanted-liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.8);
+  transition: height 0.1s linear;
+  border-radius: 0 0 7px 7px;
+}
+
+.liquid-particles {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0.5px, transparent 0.5px);
+  background-size: 6px 6px;
+}
+
+/* Distillazione - Stili aggiuntivi */
+.heating-mantle {
+  width: 120px;
+  height: 140px;
+  background: linear-gradient(to top, #333 0%, #666 100%);
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.boiling-bubbles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.boiling-bubble {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: bubbleRiseFast 1s ease-out infinite;
+}
+
+@keyframes bubbleRiseFast {
+  0% { transform: translateY(0) scale(0.5); opacity: 0.8; }
+  100% { transform: translateY(-80px) scale(1.5); opacity: 0; }
+}
+
+.vapor-rising {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+}
+
+.vapor-stream {
+  width: 100%;
+  height: 100%;
+  background: rgba(200, 200, 200, 0.6);
+  border-radius: 50%;
+  animation: vaporRiseAnim 2s ease-in-out infinite;
+}
+
+@keyframes vaporRiseAnim {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.1); }
+}
+
+.condenser-tube {
+  width: 60px;
+  height: 120px;
+  background: rgba(200, 200, 200, 0.5);
+  border: 2px solid #666;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.vapor-flow {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 80%;
+  background: rgba(200, 200, 200, 0.6);
+}
+
+.vapor-molecules {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px);
+  background-size: 4px 4px;
+  animation: flowDown 2s linear infinite;
+}
+
+@keyframes flowDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.cooling-jacket {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 150, 255, 0.2);
+  border: 2px solid rgba(100, 150, 255, 0.4);
+}
+
+.cooling-water {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(100, 150, 255, 0.3) 0%, rgba(100, 150, 255, 0.1) 100%);
+  animation: waterFlow 3s linear infinite;
+}
+
+@keyframes waterFlow {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.condensate-drops {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+}
+
+.condensate-drop {
+  position: absolute;
+  width: 4px;
+  height: 6px;
+  background: rgba(100, 150, 255, 0.9);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: dropFallSlow 1.5s ease-out infinite;
+}
+
+@keyframes dropFallSlow {
+  0% { top: 0; opacity: 1; }
+  100% { top: 20px; opacity: 0.7; }
+}
+
+.distillate-receiver {
+  width: 80px;
+  height: 100px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.distillate-liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.9);
+  transition: height 0.1s linear;
+  border-radius: 0 0 7px 7px;
+}
+
+.distillate-waves {
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  height: 10px;
+  background: rgba(100, 150, 255, 0.7);
+  border-radius: 50%;
+  animation: wave 2s ease-in-out infinite;
+}
+
+/* Cristallizzazione - Stili aggiuntivi */
+.crystallization-setup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.solution-layer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.6);
+  transition: height 0.1s linear;
+  border-radius: 0 0 97px 97px;
+}
+
+.evaporating-molecules {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.evaporating-molecule {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(200, 200, 200, 0.8);
+  border-radius: 50%;
+  animation: evaporate 2s ease-out forwards;
+}
+
+@keyframes evaporate {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-150px) scale(0.5); opacity: 0; }
+}
+
+.solution-particles {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0.5px, transparent 0.5px);
+  background-size: 6px 6px;
+}
+
+.crystals-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.crystal {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: crystalGrow 1s ease-out forwards;
+  transform-origin: center bottom;
+}
+
+@keyframes crystalGrow {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.heat-source {
+  width: 60px;
+  height: 30px;
+  position: relative;
+}
+
+.flame {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #ff6b00 0%, #ffaa00 50%, #ffff00 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  0% { transform: scaleY(1); }
+  100% { transform: scaleY(1.1); }
+}
+
+/* Cromatografia - Stili aggiuntivi */
+.chromatography-setup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.stationary-phase {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+}
+
+.spot-original {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.5s ease;
+}
+
+.spot-circle {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.8);
+  border-radius: 50%;
+}
+
+.solvent-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.solvent-level {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(100, 150, 255, 0.6);
+  transition: height 0.1s linear;
+}
+
+.solvent-front {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(100, 150, 255, 0.9);
+  transition: top 0.1s linear;
+  z-index: 5;
+}
+
+.front-line {
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 150, 255, 1);
+  box-shadow: 0 0 4px rgba(100, 150, 255, 0.6);
+}
+
+.migrating-bands {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.band {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  transition: top 0.1s linear, opacity 0.5s ease;
+}
+
+.band-color {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.band-1 .band-color { background: rgba(255, 0, 0, 0.9); }
+.band-2 .band-color { background: rgba(0, 255, 0, 0.9); }
+.band-3 .band-color { background: rgba(0, 0, 255, 0.9); }
+
+.band-label {
+  position: absolute;
+  left: 105%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.solvent-reservoir {
+  width: 60px;
+  height: 80px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 2px solid #666;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.reservoir-liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  background: rgba(100, 150, 255, 0.7);
+  border-radius: 0 0 8px 8px;
+}
+
+/* Setacciatura - Stili aggiuntivi */
+.sieving-setup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sieve-mesh {
+  width: 200px;
+  height: 80px;
+  background: rgba(200, 200, 200, 0.5);
+  border: 3px solid #666;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sieve-mesh.shaking {
+  animation: shakeHorizontal 0.3s linear infinite;
+}
+
+@keyframes shakeHorizontal {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+.mesh-holes {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, transparent 3px, rgba(200, 200, 200, 0.5) 3px),
+    radial-gradient(circle, transparent 3px, rgba(200, 200, 200, 0.5) 3px);
+  background-size: 15px 15px;
+  background-position: 0 0, 7.5px 7.5px;
+}
+
+.particles-on-sieve {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.large-particle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: rgba(139, 69, 19, 0.9);
+  border-radius: 50%;
+}
+
+.small-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(139, 69, 19, 0.7);
+  border-radius: 50%;
+  transition: transform 0.1s linear, opacity 0.3s ease;
+}
+
+.collection-tray {
+  width: 200px;
+  height: 100px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 2px solid #666;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.collected-particles-layer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(139, 69, 19, 0.3);
+  transition: height 0.1s linear;
+}
+
+.collected-particles-pattern {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.collected-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgba(139, 69, 19, 0.8);
+  border-radius: 50%;
+  animation: particleAppear 0.5s ease-out forwards;
+}
+
+@keyframes particleAppear {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Imantazione - Stili aggiuntivi */
+.magnetization-setup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.magnet-top {
+  position: relative;
+  width: 120px;
+  height: 80px;
+}
+
+.magnet-body {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, #666 0%, #333 100%);
+  border-radius: 10px;
+  display: flex;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.magnet-north, .magnet-south {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.magnet-north {
+  background: rgba(255, 0, 0, 0.3);
+  border-radius: 10px 0 0 10px;
+}
+
+.magnet-south {
+  background: rgba(0, 0, 255, 0.3);
+  border-radius: 0 10px 10px 0;
+}
+
+.magnetic-field {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 150px;
+  border: 2px dashed rgba(255, 0, 0, 0.3);
+  border-radius: 50%;
+  transition: opacity 0.5s ease;
+}
+
+.field-lines {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(ellipse at center, transparent 30%, rgba(255, 0, 0, 0.2) 30%, rgba(255, 0, 0, 0.2) 35%, transparent 35%);
+  animation: fieldPulse 2s ease-in-out infinite;
+}
+
+@keyframes fieldPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.mixture-container {
+  width: 250px;
+  height: 200px;
+  position: relative;
+}
+
+.particles-mixture {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.magnetic-particle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(139, 69, 19, 0.9);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 0, 0, 0.6);
+  transition: transform 0.1s linear, top 0.1s linear;
+  transform-origin: center;
+}
+
+.magnetic-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 0, 0, 0.8);
+  border-radius: 50%;
+}
+
+.non-magnetic-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(100, 100, 100, 0.7);
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.separated-magnetic {
+  width: 200px;
+  height: 60px;
+  position: relative;
+}
+
+.magnetic-collection {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.collected-magnetic {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: rgba(139, 69, 19, 0.9);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 0, 0, 0.6);
+  transition: top 0.1s linear;
+}
+
+/* Sublimazione - Stili aggiuntivi */
+.sublimation-setup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.heating-chamber {
+  width: 150px;
+  height: 200px;
+  background: rgba(200, 200, 200, 0.3);
+  border: 3px solid #666;
+  border-radius: 0 0 75px 75px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heat-source-bottom {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 30px;
+}
+
+.flame-animation {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #ff6b00 0%, #ffaa00 50%, #ffff00 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flameFlicker 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes flameFlicker {
+  0% { transform: scaleY(1) scaleX(1); opacity: 0.9; }
+  100% { transform: scaleY(1.2) scaleX(1.1); opacity: 1; }
+}
+
+.solid-sample-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80%;
+}
+
+.solid-sample {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(139, 69, 19, 0.9);
+  transition: height 0.1s linear;
+  border-radius: 0 0 72px 72px;
+}
+
+.solid-structure {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.1) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.1) 75%);
+  background-size: 10px 10px;
+}
+
+.subliming-molecules {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.subliming-molecule {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(200, 200, 200, 0.8);
+  border-radius: 50%;
+  animation: sublime 3s ease-out forwards;
+}
+
+@keyframes sublime {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-150px) scale(0.3); opacity: 0; }
+}
+
+.cold-finger {
+  width: 120px;
+  height: 100px;
+  background: rgba(200, 220, 255, 0.5);
+  border: 3px solid #666;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cold-surface-label {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.cold-surface-area {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.condensed-crystals {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.condensed-crystal {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: crystalForm 1s ease-out forwards;
+  transform-origin: center bottom;
+}
+
+@keyframes crystalForm {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exercise-header h2 {
+    font-size: 2rem;
+  }
+  
+  .section-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tab {
+    width: 200px;
+  }
+  
+  .methods-container,
+  .practical-examples {
+    grid-template-columns: 1fr;
+  }
+  
+  .animation-display {
+    grid-template-columns: 1fr;
+  }
+  
+  .exercise-navigation {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .results-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .action-btn {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exercise5 {
+    padding: 10px;
+  }
+  
+  .theory-section,
+  .simulation-section,
+  .practical-section,
+  .exercises-section {
+    padding: 20px;
+  }
+  
+  .exercise-header {
+    padding: 20px;
+  }
+  
+  .exercise-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .method-card,
+  .practical-card {
+    padding: 20px;
+  }
+}
+

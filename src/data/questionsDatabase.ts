@@ -883,6 +883,188 @@ export const questionsDatabase: Question[] = [
     explanation: "Gli elementi del gruppo 18 sono i gas nobili (He, Ne, Ar, Kr, Xe, Rn).",
     category: "tavola-periodica",
     difficulty: "medium"
+  },
+
+  // METODI DI SEPARAZIONE DEI MISCUGLI
+  {
+    id: 101,
+    question: "Quale metodo di separazione si usa per separare un solido insolubile da un liquido?",
+    options: ["Distillazione", "Filtrazione", "Cromatografia", "Cristallizzazione"],
+    correctAnswer: 1,
+    explanation: "La filtrazione è il metodo usato per separare un solido insolubile da un liquido usando un filtro.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 102,
+    question: "La centrifugazione sfrutta quale principio?",
+    options: ["Differenza di solubilità", "Differenza di densità", "Differenza di temperatura", "Differenza di pressione"],
+    correctAnswer: 1,
+    explanation: "La centrifugazione sfrutta la differenza di densità tra le sostanze, separandole attraverso la forza centrifuga.",
+    category: "separazione",
+    difficulty: "medium"
+  },
+  {
+    id: 103,
+    question: "Quale metodo si usa per separare un soluto da un solvente per evaporazione?",
+    options: ["Estrazione", "Cristallizzazione", "Distillazione", "Sublimazione"],
+    correctAnswer: 2,
+    explanation: "La cristallizzazione separa un soluto da un solvente facendo evaporare il solvente fino a far cristallizzare il soluto.",
+    category: "separazione",
+    difficulty: "medium"
+  },
+  {
+    id: 104,
+    question: "Per separare sostanze con diverse temperature di ebollizione si usa:",
+    options: ["Filtrazione", "Distillazione", "Decantazione", "Setacciatura"],
+    correctAnswer: 1,
+    explanation: "La distillazione sfrutta le diverse temperature di ebollizione per separare i componenti di un miscuglio liquido.",
+    category: "separazione",
+    difficulty: "medium"
+  },
+  {
+    id: 105,
+    question: "Quale metodo si usa per separare particelle di diversa dimensione?",
+    options: ["Imantazione", "Setacciatura", "Estrazione", "Centrifugazione"],
+    correctAnswer: 1,
+    explanation: "La setacciatura separa particelle di diversa dimensione facendo passare il miscuglio attraverso un setaccio.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 106,
+    question: "Per separare sostanze ferrose da altre si usa:",
+    options: ["Filtrazione", "Imantazione", "Distillazione", "Cromatografia"],
+    correctAnswer: 1,
+    explanation: "L'imantazione sfrutta le proprietà magnetiche per separare sostanze ferrose da altre sostanze.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 107,
+    question: "Quale metodo separa sostanze usando la loro diversa solubilità in un solvente?",
+    options: ["Estrazione", "Decantazione", "Cristallizzazione", "Sublimazione"],
+    correctAnswer: 0,
+    explanation: "L'estrazione separa sostanze sfruttando la loro diversa solubilità in un solvente appropriato.",
+    category: "separazione",
+    difficulty: "medium"
+  },
+  {
+    id: 108,
+    question: "La decantazione è efficace per separare:",
+    options: ["Liquidi miscibili", "Liquidi immiscibili", "Sostanze gassose", "Sostanze solide"],
+    correctAnswer: 1,
+    explanation: "La decantazione separa liquidi immiscibili che si stratificano per differenza di densità.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 109,
+    question: "Quale metodo separa sostanze in base alla loro diversa affinità per una fase mobile e una fase stazionaria?",
+    options: ["Distillazione", "Cromatografia", "Filtrazione", "Estrazione"],
+    correctAnswer: 1,
+    explanation: "La cromatografia separa sostanze in base alla loro diversa affinità per una fase mobile e una fase stazionaria.",
+    category: "separazione",
+    difficulty: "hard"
+  },
+  {
+    id: 110,
+    question: "Per separare il sale dall'acqua di mare si può usare:",
+    options: ["Filtrazione", "Distillazione", "Cristallizzazione", "Tutte le precedenti"],
+    correctAnswer: 3,
+    explanation: "Si può usare la distillazione per evaporare l'acqua, o la cristallizzazione per far precipitare il sale. La filtrazione non è efficace per soluti disciolti.",
+    category: "separazione",
+    difficulty: "medium"
+  },
+  {
+    id: 111,
+    question: "La sublimazione permette di separare:",
+    options: ["Liquidi", "Sostanze che sublimano facilmente", "Metalli", "Gas"],
+    correctAnswer: 1,
+    explanation: "La sublimazione separa sostanze che passano direttamente da solido a gas senza passare per lo stato liquido.",
+    category: "separazione",
+    difficulty: "medium"
+  },
+  {
+    id: 112,
+    question: "Quale metodo è più adatto per separare sabbia e acqua?",
+    options: ["Distillazione", "Filtrazione", "Cristallizzazione", "Estrazione"],
+    correctAnswer: 1,
+    explanation: "La filtrazione è il metodo più semplice ed efficace per separare sabbia (solido insolubile) dall'acqua.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 113,
+    question: "Per separare olio e acqua si usa principalmente:",
+    options: ["Filtrazione", "Distillazione", "Decantazione", "Setacciatura"],
+    correctAnswer: 2,
+    explanation: "La decantazione è efficace per separare olio e acqua, che sono liquidi immiscibili che si stratificano.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 114,
+    question: "La distillazione frazionata si usa per separare:",
+    options: ["Solido e liquido", "Due o più liquidi", "Due solidi", "Gas e liquido"],
+    correctAnswer: 1,
+    explanation: "La distillazione frazionata separa liquidi con diverse temperature di ebollizione.",
+    category: "separazione",
+    difficulty: "hard"
+  },
+  {
+    id: 115,
+    question: "Quale metodo si usa per separare il caffè dal filtro?",
+    options: ["Decantazione", "Filtrazione", "Distillazione", "Estrazione"],
+    correctAnswer: 1,
+    explanation: "La filtrazione è il metodo usato per separare i granuli di caffè dal liquido attraverso un filtro.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 116,
+    question: "Per separare componenti di un inchiostro si usa spesso:",
+    options: ["Filtrazione", "Cromatografia", "Distillazione", "Cristallizzazione"],
+    correctAnswer: 1,
+    explanation: "La cromatografia è ideale per separare i diversi componenti colorati di un inchiostro.",
+    category: "separazione",
+    difficulty: "medium"
+  },
+  {
+    id: 117,
+    question: "Quale metodo è più efficace per separare particelle molto piccole di solido da un liquido?",
+    options: ["Decantazione", "Filtrazione", "Centrifugazione", "Setacciatura"],
+    correctAnswer: 2,
+    explanation: "La centrifugazione è più efficace per separare particelle molto piccole che non sedimentano facilmente.",
+    category: "separazione",
+    difficulty: "medium"
+  },
+  {
+    id: 118,
+    question: "Per ottenere zucchero cristallino da una soluzione zuccherina si usa:",
+    options: ["Distillazione", "Cristallizzazione", "Filtrazione", "Estrazione"],
+    correctAnswer: 1,
+    explanation: "La cristallizzazione permette di ottenere zucchero cristallino facendo evaporare l'acqua da una soluzione satura.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 119,
+    question: "La filtrazione funziona perché:",
+    options: ["Le particelle sono più dense", "Il filtro trattiene le particelle solide", "Le sostanze hanno temperature diverse", "Le sostanze hanno densità diverse"],
+    correctAnswer: 1,
+    explanation: "La filtrazione funziona perché il filtro ha pori che permettono al liquido di passare ma trattengono le particelle solide.",
+    category: "separazione",
+    difficulty: "easy"
+  },
+  {
+    id: 120,
+    question: "Quale metodo è più adatto per separare componenti di una miscela gassosa?",
+    options: ["Filtrazione", "Distillazione frazionata", "Cristallizzazione", "Decantazione"],
+    correctAnswer: 1,
+    explanation: "La distillazione frazionata può essere usata per separare componenti di una miscela gassosa liquefacendoli e poi distillandoli.",
+    category: "separazione",
+    difficulty: "hard"
   }
 ];
 

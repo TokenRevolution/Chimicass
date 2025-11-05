@@ -5,15 +5,17 @@ import Exercise1 from './components/Exercise1';
 import Exercise2 from './components/Exercise2';
 import Exercise3 from './components/Exercise3';
 import Exercise4 from './components/Exercise4';
+import Exercise5 from './components/Exercise5';
 
 const App: React.FC = () => {
   const [currentExercise, setCurrentExercise] = useState<number>(1);
 
   const exercises = [
     { id: 1, title: "Grandezze Fondamentali e Derivate", component: Exercise1 },
-    { id: 2, title: "Sostanze, Composti e Miscugli", component: Exercise2 },
-    { id: 3, title: "Calcoli con Grandezze Fondamentali", component: Exercise3 },
-    { id: 4, title: "Stati della Materia ed Energia", component: Exercise4 }
+    { id: 2, title: "Calcoli con Grandezze Fondamentali", component: Exercise3 },
+    { id: 3, title: "Stati della Materia ed Energia", component: Exercise4 },
+    { id: 4, title: "Sostanze, Composti e Miscugli", component: Exercise2 },
+    { id: 5, title: "Metodi di Separazione dei Miscugli", component: Exercise5 }
   ];
 
   const CurrentComponent = exercises.find(ex => ex.id === currentExercise)?.component;

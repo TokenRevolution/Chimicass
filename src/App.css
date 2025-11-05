@@ -12,48 +12,48 @@
 .exercise-nav {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 30px;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
   box-shadow: var(--shadow-xl);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .nav-title {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .nav-title h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .nav-title p {
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
 .exercise-tabs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
 }
 
 .exercise-tab {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 12px 16px;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   border: 2px solid transparent;
-  border-radius: 15px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
   position: relative;
@@ -105,13 +105,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  margin-right: 15px;
+  margin-right: 10px;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .exercise-tab.active .tab-number {
@@ -163,18 +164,35 @@
   }
   
   .exercise-nav {
-    padding: 20px;
+    padding: 15px;
   }
   
   .nav-title h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .nav-title p {
+    font-size: 0.85rem;
   }
   
   .exercise-tabs {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .exercise-tab {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .tab-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+    margin-right: 8px;
   }
   
   .exercise-content {
-    padding: 25px;
+    padding: 20px;
   }
 }
